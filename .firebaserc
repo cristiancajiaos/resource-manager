@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "resource-manager-3f1c8": {
+      "hosting": {
+        "resource-manager": [
+          "resource-manager-3f1c8"
+        ]
+      }
+    }
+  }
+}
