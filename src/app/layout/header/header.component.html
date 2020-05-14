@@ -1,0 +1,33 @@
+<header>
+  <mat-toolbar color="primary">
+      <a href="#" [routerLink]="['/home']">
+        Gestor de Recursos
+      </a>
+      <span class="separator"></span>
+      <a href="#">
+        <button mat-button>
+          <mat-icon>mail</mat-icon> ejemplo@mail.com
+        </button>
+      </a>
+      <a href="#">
+        <button mat-button>
+          Menu <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+      </a>
+      <a href="#" (click)="signOut()">
+        <button mat-button>
+          <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
+        </button>
+      </a>
+      <a href="#" [routerLink]="['/sign-in']" [routerLinkActive]="['active']">
+        <button mat-button>
+          <mat-icon>account_circle</mat-icon> Iniciar Sesión
+        </button>
+      </a>
+      <a href="#" [routerLink]="['/register']" [routerLinkActive]="['active']">
+        <button mat-button>
+          <mat-icon>how_to_reg</mat-icon> Registrarse
+        </button>
+      </a>
+  </mat-toolbar>
+</header>

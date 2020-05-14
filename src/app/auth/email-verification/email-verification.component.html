@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Verifica tu cuenta</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Ya te has registrado, pero falta un paso: Verificar tu correo.</p>
+
+        <p>A tu correo, <strong>ejemplo@mail.com</strong>, llegó un mensaje con instrucciones para verificar tu correo.</p>
+
+        <p>Si no te llegó, puedes reenviarlo presionando el botón de abajo.</p>
+
+        <button mat-raised-button color="primary" (click)="resendEmail()">
+          <mat-icon>email</mat-icon> Reenviar correo de verificación
+        </button>
+    </mat-card-content>
+</mat-card>
