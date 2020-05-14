@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-password-reset',
@@ -12,7 +15,11 @@ export class PasswordResetComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.passwordResetForm = new FormGroup({
@@ -20,8 +27,14 @@ export class PasswordResetComponent implements OnInit {
     });
   }
 
-  passwordReset() {
-    console.log(this.passwordResetForm.value);
+  async passwordReset() {
+    const {email} = this.passwordResetForm.value;
+    try {
+      const result = await this.authService.passwordReset(email);
+      this.toastr.success('Se envió, a tu correo, un mensaje con instrucciones para resetear tu contraseña.');
+    } catch (error) {
+      this.toastr.error(error);
+    }
   }
 
 }

@@ -4,9 +4,10 @@
         Gestor de Recursos
       </a>
       <span class="separator"></span>
+      <span *ngIf="user$ | async as user; else notLogged">
       <a href="#">
         <button mat-button>
-          <mat-icon>mail</mat-icon> ejemplo@mail.com
+          <mat-icon>mail</mat-icon> {{user?.email}}
         </button>
       </a>
       <a href="#">
@@ -19,15 +20,18 @@
           <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
         </button>
       </a>
-      <a href="#" [routerLink]="['/sign-in']" [routerLinkActive]="['active']">
-        <button mat-button>
-          <mat-icon>account_circle</mat-icon> Iniciar Sesión
-        </button>
-      </a>
-      <a href="#" [routerLink]="['/register']" [routerLinkActive]="['active']">
-        <button mat-button>
-          <mat-icon>how_to_reg</mat-icon> Registrarse
-        </button>
-      </a>
+      </span>
+      <ng-template #notLogged>
+        <a href="#" [routerLink]="['/sign-in']" [routerLinkActive]="['active']">
+          <button mat-button>
+            <mat-icon>account_circle</mat-icon> Iniciar Sesión
+          </button>
+        </a>
+        <a href="#" [routerLink]="['/register']" [routerLinkActive]="['active']">
+          <button mat-button>
+            <mat-icon>how_to_reg</mat-icon> Registrarse
+          </button>
+        </a>
+      </ng-template>
   </mat-toolbar>
 </header>

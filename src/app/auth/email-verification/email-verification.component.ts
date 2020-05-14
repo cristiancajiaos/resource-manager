@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { User } from 'firebase';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-email-verification',
@@ -7,13 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailVerificationComponent implements OnInit {
 
-  constructor() { }
+  user$: Observable<User> = this.authService.afAuth.user;
+
+  constructor(
+    private authService: AuthService,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
   }
 
-  resendEmail() {
-    console.log('resendEmail()');
+  async resendEmail() {
+    try {
+      await this.authService.sendVerificationEmail();
+      this.toastr.success("Se reenvió el correo de verificación");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 }
