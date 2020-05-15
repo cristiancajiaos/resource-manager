@@ -32,4 +32,12 @@ export class HeaderComponent implements OnInit {
       this.toastr.error(error);
     }
   }
+
+  goToCategories() {
+    this.router.navigate(['/categories']);
+  }
+
+  goToFoos() {
+    this.router.navigate(['/foos']);
+  }
 }

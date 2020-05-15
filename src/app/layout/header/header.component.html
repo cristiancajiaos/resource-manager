@@ -10,10 +10,18 @@
           <mat-icon>mail</mat-icon> {{user?.email}}
         </button>
       </a>
-      <a href="#">
-        <button mat-button>
+      <a>
+        <button mat-button [matMenuTriggerFor]="menu">
           Menu <mat-icon>arrow_drop_down</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="goToCategories()">
+            Categories
+          </button>
+          <button mat-menu-item (click)="goToFoos()">
+            Foos
+          </button>
+        </mat-menu>
       </a>
       <a href="#" (click)="signOut()">
         <button mat-button>
