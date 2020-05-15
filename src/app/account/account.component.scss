@@ -1,0 +1,41 @@
+@import './../../assets/scss/variables.scss';
+
+.mat-sidenav-container {
+  .mat-sidenav {
+    width: 20vw;
+    background-color: $background-color;
+    position: fixed;
+    top: 64px;
+
+    .mat-sidenav-title {
+      color: white;
+      padding: 0rem 1rem;
+    }
+
+    mat-list {
+      margin-top: 0;
+
+      a {
+        color: white;
+        background-color: $background-color;
+        text-decoration: none;
+
+        .mat-icon {
+          margin-right: 10px;
+        }
+
+        &:hover {
+          background-color: darken($background-color, 20%);
+        }
+
+        &.active {
+          background-color: darken($background-color, 20%);
+        }
+      }
+    }
+  }
+
+  .mat-sidenav-content {
+    padding: 1rem;
+  }
+}

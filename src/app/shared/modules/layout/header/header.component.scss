@@ -4,7 +4,9 @@ header {
     text-decoration: none;
 
     &.active {
-      border: 1px solid white;
+      button {
+        border: 1px solid white;
+      }
     }
   }
 }

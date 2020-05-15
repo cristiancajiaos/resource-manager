@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatToolbarModule, MatCardModule, MatDividerModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSelectModule, MatProgressSpinnerModule, MatMenuModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatDividerModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSelectModule, MatProgressSpinnerModule, MatMenuModule, MatSidenavModule, MatListModule } from '@angular/material';
 
 const myModules = [
   MatToolbarModule,
@@ -13,7 +13,9 @@ const myModules = [
   MatIconModule,
   MatSelectModule,
   MatProgressSpinnerModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSidenavModule,
+  MatListModule
 ];
 
 @NgModule({

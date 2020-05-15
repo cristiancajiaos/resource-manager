@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { MainLayoutComponent } from './shared/modules/layout/main-layout/main-layout.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    component: MainLayoutComponent,
-    loadChildren: './layout/layout.module#LayoutModule'
+    path: "account",
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import("./account/account.module").then((m) => m.AccountModule),
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
+    path: "",
+    component: MainLayoutComponent,
+    loadChildren: "./shared/modules/layout/layout.module#LayoutModule",
+  },
+  {
+    path: "",
+    redirectTo: "",
+    pathMatch: "full",
   },
 ];
 
