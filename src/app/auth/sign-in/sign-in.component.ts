@@ -34,7 +34,7 @@ export class SignInComponent implements OnInit {
     /*
     this.user$.subscribe(user => {
       if (user) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['home']);
       }
     });
     */
@@ -46,10 +46,10 @@ export class SignInComponent implements OnInit {
     try {
       const result = this.authService.signIn(email, pwd);
       if (result && (await result).user.emailVerified) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['home']);
         this.toastr.success('Logueado');
       } else if (result) {
-        this.router.navigate(['/email-verification']);
+        this.router.navigate(['email-verification']);
         this.toastr.success('Logueado');
         this.toastr.warning('Este correo no está verificado');
       }

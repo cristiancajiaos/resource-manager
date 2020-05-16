@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   async signOut() {
     try {
       const result = await this.authService.signOut();
-      this.router.navigate(["/home"]);
+      this.router.navigate(["home"]);
       this.toastr.success("Deslogueado");
     } catch (error) {
       this.toastr.error(error);
@@ -32,14 +32,14 @@ export class HeaderComponent implements OnInit {
   }
 
   goToCategories() {
-    this.router.navigate(["/categories"]);
+    this.router.navigate(["categories"]);
   }
 
   goToFoos() {
-    this.router.navigate(["/foos"]);
+    this.router.navigate(["foos"]);
   }
 
   goToAdmin() {
-    this.router.navigate(["/admin"]);
+    this.router.navigate(["admin"]);
   }
 }

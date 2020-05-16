@@ -5,6 +5,7 @@
     </a>
     <span class="separator"></span>
     <span *ngIf="user$ | async as user; else notLogged">
+      <!--
       <button mat-button [matMenuTriggerFor]="menu">
         Menu <mat-icon>arrow_drop_down</mat-icon>
       </button>
@@ -16,10 +17,16 @@
           Foos
         </button>
       </mat-menu>
-      <!--
+      -->
+
       <a href="#" [routerLink]="['/categories']" [routerLinkActive]="['active']">
         <button mat-button>
           Categorías
+        </button>
+      </a>
+      <a href="#" [routerLink]="['/clients']" [routerLinkActive]="['active']">
+        <button mat-button>
+          Clientes
         </button>
       </a>
       <a href="#" [routerLink]="['/foos']" [routerLinkActive]="['active']">
@@ -27,7 +34,7 @@
           Foos
         </button>
       </a>
-      -->
+
       <a href="#" [routerLink]="['/account']" [routerLinkActive]="['active']">
         <button mat-button>
           <mat-icon>account_circle</mat-icon> {{user?.email}}

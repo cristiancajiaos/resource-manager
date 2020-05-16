@@ -1,0 +1,14 @@
+.mat-card-content {
+  width: 100%;
+
+  .table-controls {
+    width: inherit;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  table {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+}
