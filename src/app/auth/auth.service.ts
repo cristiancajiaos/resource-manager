@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthErrorService } from '../shared/services/auth-error.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
+  public userData$: Observable<firebase.User>;
+
   constructor(
     public afAuth: AngularFireAuth,
     private authError: AuthErrorService
-  ) { }
+  ) {
+    this.userData$ = afAuth.authState;
+  }
 
   async register(email: string, pwd: string) {
     try {

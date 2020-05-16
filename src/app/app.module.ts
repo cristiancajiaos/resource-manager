@@ -13,17 +13,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { MaterialModule } from './shared/modules/material/material.module';
-import { LayoutModule } from './layout/layout.module';
-import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
+import { LayoutModule } from './shared/modules/layout/layout.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainLayoutComponent,
-    HeaderComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,

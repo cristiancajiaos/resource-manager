@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       result.then(value => {
         if (value) {
           this.toastr.success("Se creó la cuenta");
-          this.router.navigate(["/email-verification"]);
+          this.router.navigate(["email-verification"]);
         }
       }).catch(error => {
         console.log(error);
