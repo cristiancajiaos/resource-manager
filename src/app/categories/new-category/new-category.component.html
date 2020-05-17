@@ -8,14 +8,14 @@
             <mat-label>Título</mat-label>
             <input matInput type="text" id="title" name="title" formControlName="categoryTitle"/>
             <mat-error *ngIf="categoryTitle.touched && categoryTitle.hasError('required')">
-              Este campo es obligatorio
+              <app-form-error-required></app-form-error-required>
             </mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Descripción</mat-label>
-            <textarea matInput name="description" id="description" formControlName="categoryDescription"></textarea>
+            <input matInput type="text" name="description" id="description" formControlName="categoryDescription"/>
             <mat-error *ngIf="categoryDescription.touched && categoryDescription.hasError('required')">
-              Este campo es obligatorio
+              <app-form-error-required></app-form-error-required>
             </mat-error>
           </mat-form-field>
           <button type="submit" mat-raised-button color="primary" [disabled]="newCategoryForm.invalid">

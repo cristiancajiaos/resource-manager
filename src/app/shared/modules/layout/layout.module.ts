@@ -8,20 +8,25 @@ import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from '../material/material.module';
 import { MainModule } from 'src/app/main/main.module';
 import { AuthModule } from 'src/app/auth/auth.module';
-
+import { CdkModule } from '../cdk/cdk.module';
 
 @NgModule({
-  declarations: [HeaderComponent, MainLayoutComponent, FooterComponent],
+  declarations: [
+    HeaderComponent,
+    MainLayoutComponent,
+    FooterComponent,
+  ],
   imports: [
     CommonModule,
     MainModule,
     AuthModule,
     LayoutRoutingModule,
-    MaterialModule
+    MaterialModule,
+    CdkModule
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class LayoutModule { }
