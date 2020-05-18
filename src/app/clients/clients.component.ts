@@ -79,7 +79,7 @@ export class ClientsComponent implements OnInit {
   }
 
   deleteClient(client: ClientI) {
-    if (confirm('¿Estás seguro de borrar este cliente? Una vez hecho esto, no puedes deshacer la acción?')) {
+    if (confirm('¿Estás seguro de borrar este cliente? Una vez hecho esto, no puedes deshacer la acción')) {
       this.clientService.deleteClient(client)
         .then(() => {
           this.toastr.success('Cliente eliminado exitosamente');

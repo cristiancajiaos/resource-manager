@@ -1,0 +1,38 @@
+<div class="form-mat-card">
+  <mat-card>
+    <div *ngIf="ad$ | async as ad; else loading">
+      <mat-card-header>
+        <mat-card-title>{{ad.adTitle}}</mat-card-title>
+        <mat-card-subtitle>{{ad.adSubtitle}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="ad-description">
+          <p>{{ad.adDescription}}</p>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="ad-contact">
+          <p>
+            <mat-icon>font_download</mat-icon>{{ad.adName}}
+          </p>
+          <p>
+            <mat-icon>phone</mat-icon> {{ad.adPhone}}
+          </p>
+          <p>
+            <mat-icon>email</mat-icon> {{ad.adEmail}}
+          </p>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <div class="ad-actions">
+        <button mat-raised-button color="primary" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Volver a Avisos
+        </button>
+      </div>
+    </div>
+    <ng-template #loading>
+      <app-now-loading></app-now-loading>
+    </ng-template>
+  </mat-card>
+</div>
+

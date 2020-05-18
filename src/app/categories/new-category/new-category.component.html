@@ -1,26 +1,28 @@
-<mat-card>
+<div class="form-mat-card">
+  <mat-card>
     <mat-card-header>
-        <mat-card-title>Nueva Categoría</mat-card-title>
+      <mat-card-title>Nueva Categoría</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]="newCategoryForm" (ngSubmit)="addCategory()">
-          <mat-form-field>
-            <mat-label>Título</mat-label>
-            <input matInput type="text" id="title" name="title" formControlName="categoryTitle"/>
-            <mat-error *ngIf="categoryTitle.touched && categoryTitle.hasError('required')">
-              <app-form-error-required></app-form-error-required>
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Descripción</mat-label>
-            <input matInput type="text" name="description" id="description" formControlName="categoryDescription"/>
-            <mat-error *ngIf="categoryDescription.touched && categoryDescription.hasError('required')">
-              <app-form-error-required></app-form-error-required>
-            </mat-error>
-          </mat-form-field>
-          <button type="submit" mat-raised-button color="primary" [disabled]="newCategoryForm.invalid">
-            <mat-icon>add</mat-icon> Añadir categoría
-          </button>
-        </form>
+      <form [formGroup]="newCategoryForm" (ngSubmit)="addCategory()">
+        <mat-form-field>
+          <mat-label>Título</mat-label>
+          <input matInput type="text" id="title" name="title" formControlName="categoryTitle" />
+          <mat-error *ngIf="categoryTitle.touched && categoryTitle.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripción</mat-label>
+          <input matInput type="text" name="description" id="description" formControlName="categoryDescription" />
+          <mat-error *ngIf="categoryDescription.touched && categoryDescription.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="newCategoryForm.invalid">
+          <mat-icon>add</mat-icon> Añadir categoría
+        </button>
+      </form>
     </mat-card-content>
-</mat-card>
+  </mat-card>
+</div>
