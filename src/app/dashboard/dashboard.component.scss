@@ -1,0 +1,21 @@
+@import './../../assets//scss/variables.scss';
+
+.mat-card {
+  .mat-card-header {
+    margin-bottom: 1rem;
+  }
+
+  .mat-grid-tile {
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: $background-color;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: background-color 0.1s ease-out;
+
+    &:hover {
+      background-color: darken($background-color, 20%);
+    }
+  }
+}

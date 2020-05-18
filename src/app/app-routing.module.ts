@@ -5,12 +5,6 @@ import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: "account",
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import("./account/account.module").then((m) => m.AccountModule),
-  },
-  {
     path: "",
     component: MainLayoutComponent,
     loadChildren: "./shared/modules/layout/layout.module#LayoutModule",

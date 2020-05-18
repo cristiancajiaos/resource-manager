@@ -30,14 +30,6 @@ export class SignInComponent implements OnInit {
       email: this.email,
       pwd: this.pwd
     });
-
-    /*
-    this.user$.subscribe(user => {
-      if (user) {
-        this.router.navigate(['home']);
-      }
-    });
-    */
   }
 
   async signIn() {
@@ -46,7 +38,7 @@ export class SignInComponent implements OnInit {
     try {
       const result = this.authService.signIn(email, pwd);
       if (result && (await result).user.emailVerified) {
-        this.router.navigate(['home']);
+        this.router.navigate(['dashboard']);
         this.toastr.success('Logueado');
       } else if (result) {
         this.router.navigate(['email-verification']);

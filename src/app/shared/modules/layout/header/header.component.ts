@@ -17,10 +17,11 @@ export class HeaderComponent implements OnInit {
   showMenuButton: boolean;
 
   menuElements: any[] = [
-    { text: 'Categorias', link: ['/categories'] },
+    { text: 'Dashboard', link: ['/dashboard']},
+    { text: 'Categorias', link: ['/categories']},
     { text: 'Clientes', link: ['/clients'] },
     { text: 'Avisos', link: ['/ads'] },
-    { text: 'Productos', link:['/products']}
+    { text: 'Productos', link: ['/products']}
   ];
 
   constructor(
@@ -31,10 +32,10 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const breakpoints = this.breakpointObserver.observe(['(max-width: 991px)']);
+    const breakpoints = this.breakpointObserver.observe(['(max-width:991px)']);
 
     breakpoints.subscribe(result => {
-      this.showMenuButton = result.breakpoints['(max-width: 991px)'];
+      this.showMenuButton = result.breakpoints['(max-width:991px)'];
     });
   }
 

@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AccountComponent } from './account.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: AccountComponent,
     children: [
       {
@@ -13,17 +15,15 @@ const routes: Routes = [
         redirectTo: 'profile'
       },
       {
-        path: "profile",
-        loadChildren: () =>
-          import("./profile/profile.module").then((m) => m.ProfileModule),
+        path: 'profile',
+        component: ProfileComponent
       },
       {
-        path: "settings",
-        loadChildren: () =>
-          import("./settings/settings.module").then((m) => m.SettingsModule),
-      },
-    ],
-  },
+        path: 'settings',
+        component: SettingsComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

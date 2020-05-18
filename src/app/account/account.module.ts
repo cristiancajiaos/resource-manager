@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
-import { MaterialModule } from '../shared/modules/material/material.module';
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
-  declarations: [AccountComponent],
+  declarations: [AccountComponent, ProfileComponent, SettingsComponent],
   imports: [
     CommonModule,
-    AccountRoutingModule,
-    MaterialModule
+    AccountRoutingModule
   ]
 })
 export class AccountModule { }
