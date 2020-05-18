@@ -19,14 +19,9 @@ const routes: Routes = [
   },
   {
     path: "ads",
-    loadChildren: () =>
-      import("../../../ads/ads.module").then((m) => m.AdsModule),
-  },
-  {
-    path: "foos",
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import("./../../../foos/foos.module").then((m) => m.FoosModule),
+      import("../../../ads/ads.module").then((m) => m.AdsModule),
   },
   {
     path: "",
