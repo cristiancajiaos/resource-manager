@@ -6,19 +6,9 @@
     <span class="separator"></span>
     <span *ngIf="user$ | async as user; else notLogged">
       <span *ngIf="!showMenuButton">
-        <a href="#" [routerLink]="['/categories']" [routerLinkActive]="['active']">
+        <a *ngFor="let menuElement of menuElements" [routerLink]="menuElement.link" [routerLinkActive]="['active']">
           <button mat-button>
-            Categorías
-          </button>
-        </a>
-        <a href="#" [routerLink]="['/clients']" [routerLinkActive]="['active']">
-          <button mat-button>
-            Clientes
-          </button>
-        </a>
-        <a href="#" [routerLink]="['/ads']" [routerLinkActive]="['active']">
-          <button mat-button>
-            Avisos
+            {{menuElement.text}}
           </button>
         </a>
         <a href="#" [routerLink]="['/account']" [routerLinkActive]="['active']">
@@ -38,14 +28,8 @@
           <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <a mat-menu-item [routerLink]="['/categories']" [routerLinkActive]="['active']">
-            Categorías
-          </a>
-          <a mat-menu-item [routerLink]="['/clients']" [routerLinkActive]="['active']">
-            Clientes
-          </a>
-          <a mat-menu-item [routerLink]="['/ads']" [routerLinkActive]="['active']">
-            Avisos
+          <a mat-menu-item *ngFor="let menuElement of menuElements" [routerLink]="menuElement.link" [routerLinkActive]="['active']">
+            {{menuElement.text}}
           </a>
           <mat-divider></mat-divider>
           <a mat-menu-item [routerLink]="['/account']" [routerLinkActive]="['active']">

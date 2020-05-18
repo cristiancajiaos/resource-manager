@@ -16,6 +16,13 @@ export class HeaderComponent implements OnInit {
 
   showMenuButton: boolean;
 
+  menuElements: any[] = [
+    { text: 'Categorias', link: ['/categories'] },
+    { text: 'Clientes', link: ['/clients'] },
+    { text: 'Avisos', link: ['/ads'] },
+    { text: 'Productos', link:['/products']}
+  ];
+
   constructor(
     private authService: AuthService,
     private router: Router,

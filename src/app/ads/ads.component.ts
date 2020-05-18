@@ -45,7 +45,7 @@ export class AdsComponent implements OnInit {
   }
 
   deleteAd(ad: AdI) {
-    if (confirm('¿Estás seguro de borrar este aviso? Una vez hecho esto, no puedes deshacer la acción')) {
+    if (confirm('¿Estás seguro de borrar este aviso? Una vez hecho esto, no puedes deshacer la acción.')) {
       this.adService.deleteAd(ad).then(() => {
         this.toastr.success('Aviso borrado exitosamente');
       }).catch(error => {
