@@ -5,46 +5,57 @@
     </a>
     <span class="separator"></span>
     <span *ngIf="user$ | async as user; else notLogged">
-      <!--
-      <button mat-button [matMenuTriggerFor]="menu">
-        Menu <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="goToCategories()">
-          Categorías
-        </button>
-        <button mat-menu-item (click)="goToFoos()">
-          Foos
-        </button>
-      </mat-menu>
-      -->
+      <span *ngIf="!showMenuButton">
+        <a href="#" [routerLink]="['/categories']" [routerLinkActive]="['active']">
+          <button mat-button>
+            Categorías
+          </button>
+        </a>
+        <a href="#" [routerLink]="['/clients']" [routerLinkActive]="['active']">
+          <button mat-button>
+            Clientes
+          </button>
+        </a>
+        <a href="#" [routerLink]="['/ads']" [routerLinkActive]="['active']">
+          <button mat-button>
+            Avisos
+          </button>
+        </a>
+        <a href="#" [routerLink]="['/account']" [routerLinkActive]="['active']">
+          <button mat-button>
+            <mat-icon>account_circle</mat-icon> {{user?.email}}
+          </button>
+        </a>
+        <a href="#" (click)="signOut()">
+          <button mat-button>
+            <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
+          </button>
+        </a>
+      </span>
 
-      <a href="#" [routerLink]="['/categories']" [routerLinkActive]="['active']">
-        <button mat-button>
-          Categorías
+      <span *ngIf="showMenuButton">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
         </button>
-      </a>
-      <a href="#" [routerLink]="['/clients']" [routerLinkActive]="['active']">
-        <button mat-button>
-          Clientes
-        </button>
-      </a>
-      <a href="#" [routerLink]="['/foos']" [routerLinkActive]="['active']">
-        <button mat-button>
-          Foos
-        </button>
-      </a>
-
-      <a href="#" [routerLink]="['/account']" [routerLinkActive]="['active']">
-        <button mat-button>
-          <mat-icon>account_circle</mat-icon> {{user?.email}}
-        </button>
-      </a>
-      <a href="#" (click)="signOut()">
-        <button mat-button>
-          <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
-        </button>
-      </a>
+        <mat-menu #menu="matMenu">
+          <a mat-menu-item [routerLink]="['/categories']" [routerLinkActive]="['active']">
+            Categorías
+          </a>
+          <a mat-menu-item [routerLink]="['/clients']" [routerLinkActive]="['active']">
+            Clientes
+          </a>
+          <a mat-menu-item [routerLink]="['/ads']" [routerLinkActive]="['active']">
+            Avisos
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-menu-item [routerLink]="['/account']" [routerLinkActive]="['active']">
+            <mat-icon>account_circle</mat-icon> {{user?.email}}
+          </a>
+          <button mat-menu-item (click)="signOut()">
+            <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
+          </button>
+        </mat-menu>
+      </span>
     </span>
     <ng-template #notLogged>
       <a href="#" [routerLink]="['/sign-in']" [routerLinkActive]="['active']">

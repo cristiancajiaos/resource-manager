@@ -1,13 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'ngx-toastr/toastr';
+@import "ngx-toastr/toastr";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import './assets/scss/variables';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .separator {
   flex: 1 1 auto;
 }
 
-.mat-card-header {
-  margin: 0;
+.mat-card-header-text {
+  margin: 0 !important;
+}
+
+.form-mat-card {
+  .mat-card {
+    width: 30%;
+    margin: 1rem auto;
+
+    form {
+      .mat-form-field {
+        width: 100%;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      button {
+        display: block;
+        text-transform: uppercase;
+        width: 100%;
+      }
+    }
+  }
 }

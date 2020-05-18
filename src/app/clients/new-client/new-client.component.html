@@ -1,0 +1,49 @@
+<div class="form-mat-card">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Nuevo Cliente</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="newClientForm" (ngSubmit)="addClient()">
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>font_download</mat-icon> Nombre
+          </mat-label>
+          <input matInput type="text" id="name" name="name" formControlName="clientName" />
+          <mat-error *ngIf="clientName.touched && clientName.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>email</mat-icon> Email
+          </mat-label>
+          <input matInput type="email" name="email" id="email" placeholder="ejemplo@mail.com"
+            formControlName="clientEmail" />
+          <mat-error *ngIf="clientEmail.touched && clientEmail.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+          <mat-error *ngIf="clientEmail.touched && clientEmail.hasError('email')">
+            <app-form-error-email></app-form-error-email>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>phone</mat-icon> Teléfono (formato +[11 dígitos])
+          </mat-label>
+          <input matInput type="text" name="phone" id="phone" placeholder="+56912345678"
+            formControlName="clientPhone" />
+          <mat-error *ngIf="clientPhone.touched && clientPhone.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+          <mat-error *ngIf="clientPhone.touched && clientPhone.hasError('pattern')">
+            <app-form-error-phone></app-form-error-phone>
+          </mat-error>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="newClientForm.invalid">
+          <mat-icon>add</mat-icon> Añadir cliente
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

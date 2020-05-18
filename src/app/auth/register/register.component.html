@@ -11,10 +11,10 @@
         <input matInput type="text" name="email" id="email" placeholder="ejemplo@mail.com"
           formControlName="email" />
         <mat-error *ngIf="email.touched && email.hasError('required')">
-          Este campo es obligatorio
+          <app-form-error-required></app-form-error-required>
         </mat-error>
         <mat-error *ngIf="email.touched && email.hasError('email')">
-          El email ingresado no es válido
+          <app-form-error-email></app-form-error-email>
         </mat-error>
       </mat-form-field>
       <mat-form-field>
@@ -23,10 +23,10 @@
         </mat-label>
         <input matInput type="password" name="pwd" id="pwd" formControlName="pwd" placeholder="Mínimo 8 caracteres de largo">
         <mat-error *ngIf="pwd.touched && pwd.hasError('required')">
-          Este campo es obligatorio
+          <app-form-error-required></app-form-error-required>
         </mat-error>
         <mat-error *ngIf="pwd.touched && pwd.hasError('minlength')">
-          La contraseña es muy corta. Debe tener, como mínimo, 8 caracteres de largo
+          <app-form-error-password></app-form-error-password>
         </mat-error>
       </mat-form-field>
       <button type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid">

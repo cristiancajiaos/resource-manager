@@ -1,0 +1,64 @@
+<div class="form-mat-card">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Nuevo Aviso</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="newAdForm" (ngSubmit)="addAd()">
+        <mat-form-field>
+          <mat-label>Título</mat-label>
+          <input matInput type="text" id="adTitle" name="adTitle" formControlName="adTitle" />
+          <mat-error *ngIf="adTitle.touched && adTitle.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Subtítulo</mat-label>
+          <input matInput type="text" id="adSubtitle" name="adSubtitle" formControlName="adSubtitle" />
+          <mat-error *ngIf="adSubtitle.touched && adSubtitle.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripción</mat-label>
+          <textarea matInput id="adDescription" name="adDescription" formControlName="adDescription"></textarea>
+          <mat-error *ngIf="adDescription.touched && adDescription.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nombre de quién publica el aviso</mat-label>
+          <input matInput type="text" id="adName" name="adName" formControlName="adName" />
+          <mat-error *ngIf="adName.touched && adName.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email de quién publica el aviso</mat-label>
+          <input matInput type="text" id="adEmail" name="adEmail" formControlName="adEmail"
+            placeholder="ejemplo@mail.com" />
+          <mat-error *ngIf="adEmail.touched && adEmail.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+          <mat-error *ngIf="adEmail.touched && adEmail.hasError('email')">
+            <app-form-error-email></app-form-error-email>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Teléfono de quién publica el anuncio (formato +[11 dígitos])</mat-label>
+          <input matInput type="text" id="adPhone" name="adPhone" formControlName="adPhone"
+            placeholder="+56912345678" />
+          <mat-error *ngIf="adPhone.touched && adPhone.hasError('required')">
+            <app-form-error-required></app-form-error-required>
+          </mat-error>
+          <mat-error *ngIf="adPhone.touched && adPhone.hasError('pattern')">
+            <app-form-error-phone></app-form-error-phone>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="newAdForm.invalid">
+          <mat-icon>add</mat-icon> Añadir aviso
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
