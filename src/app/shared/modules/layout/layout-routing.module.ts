@@ -24,6 +24,11 @@ const routes: Routes = [
       import("../../../ads/ads.module").then((m) => m.AdsModule),
   },
   {
+    path: "products",
+    loadChildren: () =>
+      import("../../../products/products.module").then((m) => m.ProductsModule),
+  },
+  {
     path: "",
     redirectTo: "/home",
     pathMatch: "full",
