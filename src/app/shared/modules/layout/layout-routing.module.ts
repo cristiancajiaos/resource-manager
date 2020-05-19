@@ -4,6 +4,14 @@ import { AuthGuard } from '../../guards/auth.guard';
 
 const routes: Routes = [
   {
+    path: "dashboard",
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import("../../../dashboard/dashboard.module").then(
+        (m) => m.DashboardModule
+      ),
+  },
+  {
     path: "categories",
     canActivate: [AuthGuard],
     loadChildren: () =>
@@ -27,6 +35,11 @@ const routes: Routes = [
     path: "products",
     loadChildren: () =>
       import("../../../products/products.module").then((m) => m.ProductsModule),
+  },
+  {
+    path: "account",
+    loadChildren: () =>
+      import("../../../account/account.module").then((m) => m.AccountModule),
   },
   {
     path: "",

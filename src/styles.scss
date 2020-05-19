@@ -44,8 +44,15 @@ body {
 
 .form-mat-card {
   .mat-card {
-    width: 30%;
     margin: 1rem auto;
+
+    @media screen and (max-width: 991px) {
+      width: inherit;
+    }
+
+    @media screen and (min-width: 992px) {
+      width: 30%;
+    }
 
     form {
       .mat-form-field {
@@ -60,5 +67,20 @@ body {
         width: 100%;
       }
     }
+
+    .mat-card-footer {
+      margin: 1rem auto;
+    }
+
+    .google-sign-in {
+      padding-top: 1rem;
+
+      button {
+        display: block;
+        text-transform: uppercase;
+        width: 100%;
+      }
+    }
   }
 }
+

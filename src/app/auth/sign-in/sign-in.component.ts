@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from 'firebase';
+import { IconDefinition, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,6 +20,8 @@ export class SignInComponent implements OnInit {
   email = new FormControl('', Validators.required);
   pwd = new FormControl('', Validators.required);
 
+  faGoogle: IconDefinition;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -31,13 +34,7 @@ export class SignInComponent implements OnInit {
       pwd: this.pwd
     });
 
-    /*
-    this.user$.subscribe(user => {
-      if (user) {
-        this.router.navigate(['home']);
-      }
-    });
-    */
+    this.faGoogle = faGoogle;
   }
 
   async signIn() {
@@ -46,13 +43,23 @@ export class SignInComponent implements OnInit {
     try {
       const result = this.authService.signIn(email, pwd);
       if (result && (await result).user.emailVerified) {
-        this.router.navigate(['home']);
+        this.router.navigate(['dashboard']);
         this.toastr.success('Logueado');
       } else if (result) {
         this.router.navigate(['email-verification']);
         this.toastr.success('Logueado');
         this.toastr.warning('Este correo no está verificado');
       }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async googleSignIn() {
+    try {
+      await this.authService.googleSignIn();
+      this.router.navigate(['dashboard']);
+      this.toastr.success('Logueado con Google');
     } catch (error) {
       console.log(error);
     }

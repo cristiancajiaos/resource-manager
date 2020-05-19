@@ -24,10 +24,10 @@
       </span>
 
       <span *ngIf="showMenuButton">
-        <button mat-button [matMenuTriggerFor]="menu">
+        <button mat-button [matMenuTriggerFor]="loggedMenu">
           <mat-icon>menu</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #loggedMenu="matMenu">
           <a mat-menu-item *ngFor="let menuElement of menuElements" [routerLink]="menuElement.link" [routerLinkActive]="['active']">
             {{menuElement.text}}
           </a>
@@ -42,16 +42,31 @@
       </span>
     </span>
     <ng-template #notLogged>
-      <a href="#" [routerLink]="['/sign-in']" [routerLinkActive]="['active']">
-        <button mat-button>
-          <mat-icon>account_circle</mat-icon> Iniciar Sesión
+      <span *ngIf="!showMenuButton">
+        <a href="#" [routerLink]="['/sign-in']" [routerLinkActive]="['active']">
+          <button mat-button>
+            <mat-icon>account_circle</mat-icon> Iniciar Sesión
+          </button>
+        </a>
+        <a href="#" [routerLink]="['/register']" [routerLinkActive]="['active']">
+          <button mat-button>
+            <mat-icon>how_to_reg</mat-icon> Registrarse
+          </button>
+        </a>
+      </span>
+      <span *ngIf="showMenuButton">
+        <button mat-button [matMenuTriggerFor]="notLoggedMenu">
+          <mat-icon>menu</mat-icon>
         </button>
-      </a>
-      <a href="#" [routerLink]="['/register']" [routerLinkActive]="['active']">
-        <button mat-button>
-          <mat-icon>how_to_reg</mat-icon> Registrarse
-        </button>
-      </a>
+        <mat-menu #notLoggedMenu="matMenu">
+          <a mat-menu-item [routerLink]="['/sign-in']" [routerLinkActive]="['active']">
+            <mat-icon>account_circle</mat-icon> Iniciar Sesión
+          </a>
+          <a mat-menu-item [routerLink]="['/register']" [routerLinkActive]="['active']">
+            <mat-icon>how_to_reg</mat-icon> Registrarse
+          </a>
+        </mat-menu>
+      </span>
     </ng-template>
   </mat-toolbar>
 </header>
