@@ -32,6 +32,13 @@
       <p>Si no tienes una cuenta, <a href="#" [routerLink]="['/register']">registrate ahora</a>.</p>
       <p>Si olvidaste tu contraseña, <a href="#" [routerLink]="['/password-reset']">ingresa aquí para resetearla</a>.
       </p>
+      <mat-divider></mat-divider>
+      <div class="google-sign-in">
+        <p>¿Deseas iniciar sesión con tu cuenta de <strong>Google</strong>?</p>
+        <button mat-raised-button color="warn" (click)="googleSignIn()">
+          Iniciar sesión con Google
+        </button>
+      </div>
     </mat-card-footer>
   </mat-card>
 </div>

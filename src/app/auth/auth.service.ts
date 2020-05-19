@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthErrorService } from '../shared/services/auth-error.service';
 import { Observable } from 'rxjs';
+import { auth } from 'firebase';
 
 @Injectable({
   providedIn: "root",
@@ -62,5 +63,9 @@ export class AuthService {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  googleSignIn() {
+    return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 }

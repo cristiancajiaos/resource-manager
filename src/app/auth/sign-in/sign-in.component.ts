@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from 'firebase';
+import { IconDefinition, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,6 +20,8 @@ export class SignInComponent implements OnInit {
   email = new FormControl('', Validators.required);
   pwd = new FormControl('', Validators.required);
 
+  faGoogle: IconDefinition;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -30,6 +33,8 @@ export class SignInComponent implements OnInit {
       email: this.email,
       pwd: this.pwd
     });
+
+    this.faGoogle = faGoogle;
   }
 
   async signIn() {
@@ -45,6 +50,16 @@ export class SignInComponent implements OnInit {
         this.toastr.success('Logueado');
         this.toastr.warning('Este correo no está verificado');
       }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async googleSignIn() {
+    try {
+      await this.authService.googleSignIn();
+      this.router.navigate(['dashboard']);
+      this.toastr.success('Logueado con Google');
     } catch (error) {
       console.log(error);
     }
