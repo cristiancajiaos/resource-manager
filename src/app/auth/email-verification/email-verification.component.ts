@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { User } from 'firebase';
+import { User } from 'firebase/app';
 import { Observable } from 'rxjs';
 
 @Component({

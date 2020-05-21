@@ -1,0 +1,14 @@
+.mat-card {
+  width: 30%;
+  margin: 1rem auto;
+
+  .location-actions {
+    padding: 0.75rem 0.25rem 0.25rem 0.25rem;
+
+    button {
+      display: block;
+      text-transform: uppercase;
+      width: 100%;
+    }
+  }
+}

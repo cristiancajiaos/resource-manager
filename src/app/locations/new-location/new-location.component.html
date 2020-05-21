@@ -1,0 +1,50 @@
+<div class="form-mat-card">
+  <mat-card>
+      <mat-card-header>
+          <mat-card-title>Nueva Ubicación</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <form [formGroup]="newLocationForm" (ngSubmit)="addLocation()">
+            <mat-form-field>
+              <mat-label>
+                Dirección
+              </mat-label>
+              <input matInput type="text" id="direction" name="direction" formControlName="locationDirection" />
+              <mat-error *ngIf="locationDirection.touched && locationDirection.hasError('required')">
+                <app-form-error-required></app-form-error-required>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>
+                Estado / Comuna
+              </mat-label>
+              <input matInput type="text" id="state" name="state" formControlName="locationState" />
+              <mat-error *ngIf="locationState.touched && locationState.hasError('required')">
+                <app-form-error-required></app-form-error-required>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>
+                Ciudad
+              </mat-label>
+              <input matInput type="text" id="city" name="city" formControlName="locationCity" />
+              <mat-error *ngIf="locationCity.touched && locationCity.hasError('required')">
+                <app-form-error-required></app-form-error-required>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>
+                País
+              </mat-label>
+              <input matInput type="text" id="country" name="country" formControlName="locationCountry" />
+              <mat-error *ngIf="locationCountry.touched && locationCountry.hasError('required')">
+                <app-form-error-required></app-form-error-required>
+              </mat-error>
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" [disabled]="newLocationForm.invalid">
+              <mat-icon>add</mat-icon> Añadir ubicación
+            </button>
+          </form>
+      </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,59 @@
+<mat-card class="table-mat-card">
+    <mat-card-header>
+        <mat-card-title>Medios de pago</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div [hidden]="!dataSource">
+        <div class="table-controls">
+          <button mat-raised-button color="primary" (click)="addPayMethod()">
+            <mat-icon>add</mat-icon> Añadir medio de pago
+          </button>
+        </div>
+        <div class="table mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="paymethodTitle">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Título
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{element.paymethodTitle}}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="paymethodDescription">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Descripción
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{element.paymethodDescription}}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>
+                Acciones
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-button color="primary" matTooltip="Editar este método de pago"
+                  (click)="editPayMethod(element)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button color="warn" matTooltip="Eliminar este método de pago"
+                  (click)="deletePayMethod(element)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+      <div [hidden]="dataSource">
+        <app-now-loading></app-now-loading>
+      </div>
+    </mat-card-content>
+</mat-card>

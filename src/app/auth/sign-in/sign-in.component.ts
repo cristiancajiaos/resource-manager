@@ -4,8 +4,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { User } from 'firebase';
-import { IconDefinition, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { User } from 'firebase/app';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,8 +19,6 @@ export class SignInComponent implements OnInit {
   email = new FormControl('', Validators.required);
   pwd = new FormControl('', Validators.required);
 
-  faGoogle: IconDefinition;
-
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -33,8 +30,6 @@ export class SignInComponent implements OnInit {
       email: this.email,
       pwd: this.pwd
     });
-
-    this.faGoogle = faGoogle;
   }
 
   async signIn() {
