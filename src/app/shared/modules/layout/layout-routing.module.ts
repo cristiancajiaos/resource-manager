@@ -4,66 +4,86 @@ import { AuthGuard } from '../../guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: "dashboard",
-    canActivate: [AuthGuard],
+    path: 'dashboard',
+    canActivate: [
+      AuthGuard
+    ],
     loadChildren: () =>
-      import("../../../dashboard/dashboard.module").then(
+      import('../../../dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
   },
   {
-    path: "categories",
-    canActivate: [AuthGuard],
+    path: 'categories',
+    canActivate: [
+      AuthGuard
+    ],
     loadChildren: () =>
-      import("./../../../categories/categories.module").then(
+      import('./../../../categories/categories.module').then(
         (m) => m.CategoriesModule
       ),
   },
   {
-    path: "clients",
-    canActivate: [AuthGuard],
+    path: 'clients',
+    canActivate: [
+      AuthGuard
+    ],
     loadChildren: () =>
-      import("../../../clients/clients.module").then((m) => m.ClientsModule),
+      import('../../../clients/clients.module').then((m) => m.ClientsModule),
   },
   {
-    path: "ads",
-    canActivate: [AuthGuard],
+    path: 'ads',
+    canActivate: [
+      AuthGuard
+    ],
     loadChildren: () =>
-      import("../../../ads/ads.module").then((m) => m.AdsModule),
+      import('../../../ads/ads.module').then((m) => m.AdsModule),
   },
   {
-    path: "products",
+    path: 'products',
+    canActivate: [
+      AuthGuard
+    ],
     loadChildren: () =>
-      import("../../../products/products.module").then((m) => m.ProductsModule),
+      import('../../../products/products.module').then((m) => m.ProductsModule),
   },
   {
-    path: "locations",
+    path: 'locations',
+    canActivate: [
+      AuthGuard
+    ],
     loadChildren: () =>
-      import("../../../locations/locations.module").then(
+      import('../../../locations/locations.module').then(
         (m) => m.LocationsModule
       ),
   },
   {
-    path: "paymethods",
+    path: 'paymethods',
+    canActivate: [
+      AuthGuard
+    ],
     loadChildren: () =>
-      import("../../../paymethods/paymethods.module").then(
+      import('../../../paymethods/paymethods.module').then(
         (m) => m.PaymethodsModule
       ),
   },
   {
-    path: "account",
+    path: 'account',
+    canActivate: [
+      AuthGuard
+    ],
     loadChildren: () =>
-      import("../../../account/account.module").then((m) => m.AccountModule),
+      import('../../../account/account.module').then((m) => m.AccountModule),
   },
   {
-    path: "",
-    redirectTo: "/home",
-    pathMatch: "full",
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
   },
   {
-    path: "**",
-    redirectTo: "/not-found",
-    pathMatch: "full",
+    path: '**',
+    redirectTo: '/not-found',
+    pathMatch: 'full',
   },
 ];
 
