@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       const result = this.authService.register(email, pwd);
       result.then(value => {
         if (value) {
-          this.toastr.success("Se creó la cuenta");
+          this.toastr.success("La cuenta se creó exitosamente");
           this.router.navigate(["email-verification"]);
         }
       }).catch(error => {
