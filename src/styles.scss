@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "ngx-toastr/toastr";
 
-@import "./assets/scss/variables";
+@import "./assets/scss/main.scss";
 
 html,
 body {
@@ -10,77 +10,5 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.separator {
-  flex: 1 1 auto;
-}
-
-.mat-card-header-text {
-  margin: 0 !important;
-}
-
-.table-mat-card {
-  .mat-card-content {
-    width: 100%;
-
-    .table-controls {
-      width: inherit;
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 1rem;
-
-      button {
-        text-transform: uppercase;
-      }
-    }
-
-    table {
-      width: 100%;
-      font-size: 1.5rem;
-    }
-  }
-}
-
-.form-mat-card {
-  .mat-card {
-    margin: 1rem auto;
-
-    @media screen and (max-width: 991px) {
-      width: inherit;
-    }
-
-    @media screen and (min-width: 992px) {
-      width: 30%;
-    }
-
-    form {
-      .mat-form-field {
-        width: 100%;
-        display: block;
-        margin-bottom: 1rem;
-      }
-
-      button {
-        display: block;
-        text-transform: uppercase;
-        width: 100%;
-      }
-    }
-
-    .mat-card-footer {
-      margin: 1rem auto;
-    }
-
-    .google-sign-in {
-      padding-top: 1rem;
-
-      button {
-        display: block;
-        text-transform: uppercase;
-        width: 100%;
-      }
-    }
-  }
 }
 

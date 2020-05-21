@@ -1,21 +1,27 @@
-@import './../../assets//scss/variables.scss';
+@import './../../assets/scss/variables/variables.scss';
 
 .mat-card {
   .mat-card-header {
     margin-bottom: 1rem;
   }
 
-  .mat-grid-tile {
-    border: 1px solid black;
-    cursor: pointer;
-    background-color: $background-color;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    transition: background-color 0.1s ease-out;
+  .mat-card-content {
+    padding-top: 1rem;
 
-    &:hover {
-      background-color: darken($background-color, 20%);
+    .mat-grid-tile {
+      border: 1px solid black;
+      cursor: pointer;
+      text-transform: uppercase;
+      background-color: $background-color;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      transition: background-color 0.1s ease-out;
+      box-shadow: 3px 3px 5px black;
+
+      &:hover {
+        background-color: darken($background-color, 20%);
+      }
     }
   }
 }

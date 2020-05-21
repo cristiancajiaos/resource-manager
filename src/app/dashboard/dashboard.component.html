@@ -3,10 +3,10 @@
       <mat-card-header>
         <mat-card-title>Bienvenido, {{user?.email}}</mat-card-title>
       </mat-card-header>
+      <mat-divider></mat-divider>
       <mat-card-content>
-        <mat-grid-list [cols]="cols" rowHeight="100px" gutterSize="15px">
-          <mat-grid-tile *ngFor="let section of sections"
-            colspan="1" rowspan="1" (click)="goToSection(section.link)">
+        <mat-grid-list [cols]="cols" rowHeight="100px" gutterSize="1rem">
+          <mat-grid-tile *ngFor="let section of sections" colspan="1" rowspan="1" (click)="goToSection(section.link)">
             {{section.text}}
           </mat-grid-tile>
         </mat-grid-list>

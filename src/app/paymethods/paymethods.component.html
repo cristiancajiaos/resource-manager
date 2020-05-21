@@ -1,7 +1,9 @@
-<mat-card class="table-mat-card">
+<div class="table-mat-card">
+  <mat-card>
     <mat-card-header>
-        <mat-card-title>Medios de pago</mat-card-title>
+      <mat-card-title>Medios de pago</mat-card-title>
     </mat-card-header>
+    <mat-divider></mat-divider>
     <mat-card-content>
       <div [hidden]="!dataSource">
         <div class="table-controls">
@@ -56,4 +58,5 @@
         <app-now-loading></app-now-loading>
       </div>
     </mat-card-content>
-</mat-card>
+  </mat-card>
+</div>

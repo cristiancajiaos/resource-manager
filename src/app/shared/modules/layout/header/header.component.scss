@@ -1,9 +1,12 @@
-@import './../../../../../assets/scss/variables';
-
+@import './../../../../../assets/scss/variables/variables.scss';
 header {
   a {
     color: white;
     text-decoration: none;
+
+    &:hover {
+      opacity: 0.5;
+    }
 
     &.active {
       button {
@@ -14,5 +17,12 @@ header {
 
   button.mat-button {
     font-size: 0.6rem;
+    padding-left:0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .toolbar-brand {
+    text-transform: uppercase;
+    font-weight: bold;
   }
 }
