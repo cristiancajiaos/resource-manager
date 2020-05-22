@@ -31,7 +31,7 @@ export class PasswordResetComponent implements OnInit {
     const {email} = this.passwordResetForm.value;
     try {
       const result = await this.authService.passwordReset(email);
-      this.toastr.success('Se envió, a tu correo, un mensaje con instrucciones para resetear tu contraseña.');
+      this.toastr.success('Se envió, a tu correo, un mensaje con instrucciones para resetear tu contraseña');
     } catch (error) {
       this.toastr.error(error);
     }

@@ -1,0 +1,42 @@
+<div class="form-mat-card">
+  <mat-card>
+    <div *ngIf="paymethod$; else loading">
+      <mat-card-header>
+        <mat-card-title>Editar Método de Pago</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="editPayMethodForm" (ngSubmit)="editPayMethod()">
+          <mat-form-field>
+            <mat-label>Título</mat-label>
+            <input matInput type="text" id="paymethodTitle" name="paymethodTitle" formControlName="paymethodTitle" />
+            <mat-error *ngIf="paymethodTitle.touched && paymethodTitle.hasError('required')">
+              <app-form-error-required></app-form-error-required>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <textarea matInput id="paymethodDescription" name="paymethodDescription"
+              formControlName="paymethodDescription">
+              </textarea>
+            <mat-error *ngIf="paymethodDescription.touched && paymethodDescription.hasError('required')">
+              <app-form-error-required></app-form-error-required>
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="editPayMethodForm.invalid || submitted">
+            <mat-icon>edit</mat-icon> Editar forma de pago
+          </button>
+        </form>
+        <p *ngIf="submitted">Editando medio de pago...</p>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer>
+        <button mat-raised-button color="warn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Volver atrás
+        </button>
+      </mat-card-footer>
+    </div>
+    <ng-template #loading>
+      <app-now-loading></app-now-loading>
+    </ng-template>
+  </mat-card>
+</div>

@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AdI } from 'src/app/shared/interfaces/ad-i';
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-edit-ad",
@@ -27,11 +28,14 @@ export class EditAdComponent implements OnInit {
   adPhone: FormControl;
   adEmail: FormControl;
 
+  submitted = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private adService: AdsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -67,6 +71,8 @@ export class EditAdComponent implements OnInit {
   }
 
   editAd() {
+    this.submitted = true;
+
     const ad: AdI = {
       id: this.id,
       adTitle: this.editAdForm.value.adTitle,
@@ -83,6 +89,12 @@ export class EditAdComponent implements OnInit {
     }).catch(error => {
       console.log(error);
       this.toastr.error(error);
+    }).finally(() => {
+      this.submitted = false;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

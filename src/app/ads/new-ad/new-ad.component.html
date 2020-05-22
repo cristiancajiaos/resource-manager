@@ -55,10 +55,17 @@
             <app-form-error-phone></app-form-error-phone>
           </mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary" [disabled]="newAdForm.invalid">
+        <button mat-raised-button color="primary" [disabled]="newAdForm.invalid || submitted">
           <mat-icon>add</mat-icon> Añadir aviso
         </button>
       </form>
+      <p *ngIf="submitted">Añadiendo aviso...</p>
     </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-footer>
+      <button mat-raised-button color="warn" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon> Volver atrás
+      </button>
+    </mat-card-footer>
   </mat-card>
 </div>

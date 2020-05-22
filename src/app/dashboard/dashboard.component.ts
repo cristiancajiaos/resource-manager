@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from 'firebase';
+import { User } from 'firebase/app';
 import { AuthService } from '../auth/auth.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
     { text: "Clientes", link: "clients" },
     { text: "Avisos", link: "ads" },
     { text: "Productos", link: "products" },
+    { text: 'Ubicaciones', link: 'locations' },
+    { text: 'Medios de Pago', link: 'paymethods'}
   ];
 
   constructor(

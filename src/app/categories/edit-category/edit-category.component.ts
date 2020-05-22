@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CategoryI } from 'src/app/shared/interfaces/category-i';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-category',
@@ -21,11 +22,14 @@ export class EditCategoryComponent implements OnInit {
   categoryTitle: FormControl;
   categoryDescription: FormControl;
 
+  submitted = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -53,6 +57,7 @@ export class EditCategoryComponent implements OnInit {
   }
 
   editCategory() {
+    this.submitted = true;
     const category: CategoryI = {
       id: this.id,
       categoryTitle: this.editCategoryForm.value.categoryTitle,
@@ -66,7 +71,13 @@ export class EditCategoryComponent implements OnInit {
       .catch(error => {
         console.log(error);
         this.toastr.error(error);
+      }).finally(() => {
+        this.submitted = false;
       });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

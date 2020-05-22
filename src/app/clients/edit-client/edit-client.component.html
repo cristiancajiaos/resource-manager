@@ -41,11 +41,17 @@
               <app-form-error-phone></app-form-error-phone>
             </mat-error>
           </mat-form-field>
-          <button type="submit" mat-raised-button color="primary" [disabled]="editClientForm.invalid">
+          <button type="submit" mat-raised-button color="primary" [disabled]="editClientForm.invalid || submitted">
             <mat-icon>edit</mat-icon> Editar cliente
           </button>
         </form>
+        <p *ngIf="submitted">Editando cliente...</p>
       </mat-card-content>
+      <mat-card-footer>
+        <button mat-raised-button color="warn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Volver atrás
+        </button>
+      </mat-card-footer>
     </div>
     <ng-template #loading>
       <app-now-loading></app-now-loading>

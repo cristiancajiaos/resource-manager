@@ -4,7 +4,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { User } from 'firebase';
+import { User } from 'firebase/app';
 
 @Component({
   selector: 'app-register',
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       const result = this.authService.register(email, pwd);
       result.then(value => {
         if (value) {
-          this.toastr.success("Se creó la cuenta");
+          this.toastr.success("La cuenta se creó exitosamente");
           this.router.navigate(["email-verification"]);
         }
       }).catch(error => {

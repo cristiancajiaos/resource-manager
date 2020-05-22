@@ -1,0 +1,25 @@
+<div class="form-mat-card">
+  <mat-card>
+      <div *ngIf="location$ | async as location; else loading">
+        <mat-card-content>
+          <h3>Dirección</h3>
+          <p>{{location?.locationDirection}}</p>
+          <h3>Estado / Comuna</h3>
+          <p>{{location?.locationState}}</p>
+          <h3>Ciudad</h3>
+          <p>{{location?.locationCity}}</p>
+          <h3>País</h3>
+          <p>{{location?.locationCountry}}</p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <div class="location-actions">
+          <button mat-raised-button color="warn" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon> Volver atrás
+          </button>
+        </div>
+      </div>
+      <ng-template #loading>
+        <app-now-loading></app-now-loading>
+      </ng-template>
+  </mat-card>
+</div>

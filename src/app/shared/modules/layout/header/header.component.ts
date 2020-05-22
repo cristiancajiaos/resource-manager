@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription } from 'rxjs';
-import { User } from 'firebase';
+import { User } from 'firebase/app';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
@@ -19,9 +19,11 @@ export class HeaderComponent implements OnInit {
   menuElements: any[] = [
     { text: 'Dashboard', link: ['/dashboard']},
     { text: 'Categorias', link: ['/categories']},
-    { text: 'Clientes', link: ['/clients'] },
-    { text: 'Avisos', link: ['/ads'] },
-    { text: 'Productos', link: ['/products']}
+    { text: 'Clientes', link: ['/clients']},
+    { text: 'Avisos', link: ['/ads']},
+    { text: 'Productos', link: ['/products']},
+    { text: 'Ubicaciones', link: ['/locations']},
+    { text: 'Medios de Pago', link: ['/paymethods']}
   ];
 
   constructor(

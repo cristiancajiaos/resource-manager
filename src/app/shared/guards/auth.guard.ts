@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     return this.authService.userData$.pipe(map(user => {
       if (!user) {
         this.router.navigate(['sign-in']);
-        this.toastr.error('Acceso denegado. Solo pueden acceder los usuarios registrados.');
+        this.toastr.error('A esta sección, solo pueden ingresar los usuarios registrados');
         return false;
       }
 

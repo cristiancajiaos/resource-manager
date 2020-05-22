@@ -1,3 +1,8 @@
-<p>account works!</p>
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let section of sections" [routerLink]="section.link"
+    routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+    {{section.name}}
+  </a>
+</nav>
 
 <router-outlet></router-outlet>

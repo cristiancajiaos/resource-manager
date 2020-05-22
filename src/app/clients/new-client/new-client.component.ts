@@ -4,6 +4,7 @@ import { ClientI } from 'src/app/shared/interfaces/client-i';
 import { ClientsService } from '../clients.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-new-client",
@@ -19,10 +20,13 @@ export class NewClientComponent implements OnInit {
   clientEmail: FormControl;
   clientPhone: FormControl;
 
+  submitted = false;
+
   constructor(
     private clientsService: ClientsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -38,13 +42,21 @@ export class NewClientComponent implements OnInit {
   }
 
   addClient() {
+    this.submitted = true;
+
     const client: ClientI = this.newClientForm.value;
     this.clientsService.addClient(client).then(() => {
       this.router.navigate(['clients']);
       this.toastr.success('Cliente agregado exitosamente');
     }, (error) => {
-        console.log(error);
-        this.toastr.error(error);
+      console.log(error);
+      this.toastr.error(error);
+    }).finally(() => {
+      this.submitted = false;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
