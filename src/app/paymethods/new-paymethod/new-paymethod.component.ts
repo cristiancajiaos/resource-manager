@@ -4,6 +4,7 @@ import { PayMethodI } from 'src/app/shared/interfaces/pay-method-i';
 import { PaymethodsService } from '../paymethods.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-paymethod',
@@ -17,10 +18,13 @@ export class NewPaymethodComponent implements OnInit {
   paymethodTitle: FormControl;
   paymethodDescription: FormControl;
 
+  submitted = false;
+
   constructor(
     private paymethodsService: PaymethodsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -34,8 +38,10 @@ export class NewPaymethodComponent implements OnInit {
   }
 
   addPayMethod() {
+    this.submitted = true;
+
     const payMethod: PayMethodI = this.newPayMethodForm.value;
-    
+
     this.paymethodsService
       .addPayMethod(payMethod)
       .then(() => {
@@ -45,6 +51,12 @@ export class NewPaymethodComponent implements OnInit {
       .catch(error => {
         console.log(error);
         this.toastr.error(error);
+      }).finally(() => {
+        this.submitted = false;
       });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

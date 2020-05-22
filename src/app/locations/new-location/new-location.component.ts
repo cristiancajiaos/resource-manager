@@ -4,6 +4,7 @@ import { LocationI } from 'src/app/shared/interfaces/location-i';
 import { LocationsService } from '../locations.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-location',
@@ -19,10 +20,13 @@ export class NewLocationComponent implements OnInit {
   locationCity: FormControl;
   locationCountry: FormControl;
 
+  submitted = false;
+
   constructor(
     private locationsService: LocationsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -40,6 +44,8 @@ export class NewLocationComponent implements OnInit {
   }
 
   addLocation() {
+    this.submitted = true;
+
     const location: LocationI = this.newLocationForm.value;
     this.locationsService
       .addLocation(location)
@@ -50,6 +56,13 @@ export class NewLocationComponent implements OnInit {
       .catch(error => {
         console.log(error);
         this.toastr.error(error);
+      }).finally(() => {
+        this.submitted = false;
       });
   }
+
+  goBack() {
+    this.location.back();
+  }
 }
+

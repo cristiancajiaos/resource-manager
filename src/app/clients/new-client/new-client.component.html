@@ -40,10 +40,16 @@
             <app-form-error-phone></app-form-error-phone>
           </mat-error>
         </mat-form-field>
-        <button type="submit" mat-raised-button color="primary" [disabled]="newClientForm.invalid">
+        <button type="submit" mat-raised-button color="primary" [disabled]="newClientForm.invalid || submitted">
           <mat-icon>add</mat-icon> Añadir cliente
         </button>
       </form>
+      <p *ngIf="submitted">Añadiendo cliente...</p>
     </mat-card-content>
+    <mat-card-footer>
+      <button mat-raised-button color="warn" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon> Volver atrás
+      </button>
+    </mat-card-footer>
   </mat-card>
 </div>

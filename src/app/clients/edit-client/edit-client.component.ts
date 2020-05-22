@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ClientI } from 'src/app/shared/interfaces/client-i';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-edit-client",
@@ -24,11 +25,14 @@ export class EditClientComponent implements OnInit {
   clientEmail: FormControl;
   clientPhone: FormControl;
 
+  submitted = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private clientService: ClientsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -58,6 +62,8 @@ export class EditClientComponent implements OnInit {
   }
 
   editClient() {
+    this.submitted = true;
+
     const client = {
       id: this.id,
       clientName: this.editClientForm.value.clientName,
@@ -71,6 +77,12 @@ export class EditClientComponent implements OnInit {
     }).catch(error => {
       console.log(error);
       this.toastr.error(error);
+    }).finally(() => {
+      this.submitted = false;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

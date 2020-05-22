@@ -20,10 +20,17 @@
                 <app-form-error-required></app-form-error-required>
               </mat-error>
             </mat-form-field>
-            <button mat-raised-button color="primary" [disabled]="newPayMethodForm.invalid">
+            <button mat-raised-button color="primary" [disabled]="newPayMethodForm.invalid || submitted">
               <mat-icon>add</mat-icon> Añadir forma de pago
             </button>
           </form>
+          <p *ngIf="submitted">Añadiendo medio de pago...</p>
       </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer>
+        <button mat-raised-button color="warn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Volver atrás
+        </button>
+      </mat-card-footer>
   </mat-card>
 </div>

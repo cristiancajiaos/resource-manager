@@ -42,11 +42,18 @@
               <app-form-error-required></app-form-error-required>
             </mat-error>
           </mat-form-field>
-          <button mat-raised-button color="primary" [disabled]="editLocationForm.invalid">
+          <button mat-raised-button color="primary" [disabled]="editLocationForm.invalid || submitted">
             <mat-icon>edit</mat-icon> Editar Ubicación
           </button>
         </form>
+        <p *ngIf="submitted">Editando ubicación...</p>
       </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer>
+        <button mat-raised-button color="warn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Volver atrás
+        </button>
+      </mat-card-footer>
     </div>
     <ng-template #loading>
       <app-now-loading></app-now-loading>

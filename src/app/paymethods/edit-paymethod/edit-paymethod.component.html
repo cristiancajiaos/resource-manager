@@ -22,11 +22,18 @@
               <app-form-error-required></app-form-error-required>
             </mat-error>
           </mat-form-field>
-          <button mat-raised-button color="primary" [disabled]="editPayMethodForm.invalid">
+          <button mat-raised-button color="primary" [disabled]="editPayMethodForm.invalid || submitted">
             <mat-icon>edit</mat-icon> Editar forma de pago
           </button>
         </form>
+        <p *ngIf="submitted">Editando medio de pago...</p>
       </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer>
+        <button mat-raised-button color="warn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Volver atrás
+        </button>
+      </mat-card-footer>
     </div>
     <ng-template #loading>
       <app-now-loading></app-now-loading>

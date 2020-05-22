@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdI } from './../../shared/interfaces/ad-i';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-ad',
@@ -23,10 +24,13 @@ export class NewAdComponent implements OnInit {
   adPhone: FormControl;
   adEmail: FormControl;
 
+  submitted = false;
+
   constructor(
     private adService: AdsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -49,6 +53,8 @@ export class NewAdComponent implements OnInit {
   }
 
   addAd() {
+    this.submitted = true;
+
     const ad: AdI = this.newAdForm.value;
     this.adService.addAd(ad).then(() => {
       this.router.navigate(['ads']);
@@ -56,7 +62,13 @@ export class NewAdComponent implements OnInit {
     }).catch(error => {
       console.log(error);
       this.toastr.error(error);
+    }).finally(() => {
+      this.submitted = false;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

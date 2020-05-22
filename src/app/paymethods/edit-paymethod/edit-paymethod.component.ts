@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { PayMethodI } from 'src/app/shared/interfaces/pay-method-i';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-paymethod',
@@ -21,11 +22,14 @@ export class EditPaymethodComponent implements OnInit {
   paymethodTitle: FormControl;
   paymethodDescription: FormControl;
 
+  submitted = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private paymethodsService: PaymethodsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) {
 
   }
@@ -55,6 +59,8 @@ export class EditPaymethodComponent implements OnInit {
   }
 
   editPayMethod() {
+    this.submitted = true;
+
     const paymethod: PayMethodI = {
       id: this.id,
       paymethodTitle: this.editPayMethodForm.value.paymethodTitle,
@@ -70,7 +76,13 @@ export class EditPaymethodComponent implements OnInit {
       .catch(error => {
         console.log(error);
         this.toastr.error(error);
+      }).finally(() => {
+        this.submitted = true;
       });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

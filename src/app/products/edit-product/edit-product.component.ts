@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ProductI } from 'src/app/shared/interfaces/product-i';
 import { CategoryI } from 'src/app/shared/interfaces/category-i';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-product',
@@ -25,12 +26,15 @@ export class EditProductComponent implements OnInit {
   categoryName: FormControl;
   productDescription: FormControl;
 
+  submitted = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private productsService: ProductsService,
     private categoryService: CategoryService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -61,6 +65,8 @@ export class EditProductComponent implements OnInit {
   }
 
   editProduct() {
+    this.submitted = true;
+
     const product: ProductI = {
       id: this.id,
       productName: this.editProductForm.value.productName,
@@ -77,7 +83,12 @@ export class EditProductComponent implements OnInit {
       .catch(error => {
         console.log(error);
         this.toastr.error(error);
+      }).finally(() => {
+        this.submitted = false;
       });
   }
 
+  goBack() {
+    this.location.back();
+  }
 }

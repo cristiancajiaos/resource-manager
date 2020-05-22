@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Form, Validators } from '@angular/forms';
 import { LocationI } from 'src/app/shared/interfaces/location-i';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-location',
@@ -23,11 +24,14 @@ export class EditLocationComponent implements OnInit {
   locationCity: FormControl;
   locationCountry: FormControl;
 
+  submitted = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private locationService: LocationsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -59,6 +63,8 @@ export class EditLocationComponent implements OnInit {
   }
 
   editLocation() {
+    this.submitted = true;
+
     const location: LocationI = {
       id: this.id,
       locationDirection: this.editLocationForm.value.locationDirection,
@@ -76,6 +82,12 @@ export class EditLocationComponent implements OnInit {
       .catch(error => {
         console.log(error);
         this.toastr.error(error);
+      }).finally(() => {
+        this.submitted = false;
       });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
