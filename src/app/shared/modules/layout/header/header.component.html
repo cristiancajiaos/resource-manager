@@ -6,21 +6,26 @@
     <span class="separator"></span>
     <span *ngIf="user$ | async as user; else notLogged">
       <span *ngIf="!showMenuButton">
-        <a *ngFor="let menuElement of menuElements" [routerLink]="menuElement.link" [routerLinkActive]="['active']">
-          <button mat-button>
-            {{menuElement.text}}
-          </button>
-        </a>
-        <a href="#" [routerLink]="['/account']" [routerLinkActive]="['active']">
-          <button mat-button>
-            <mat-icon>account_circle</mat-icon> {{user?.email}}
-          </button>
-        </a>
-        <a href="#" (click)="signOut()">
-          <button mat-button>
-            <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
-          </button>
-        </a>
+          <a href="#" [routerLink]="['/dashboard']" [routerLinkActive]="['active']">
+            <button mat-button>
+              Dashboard
+            </button>
+          </a>
+          <a *ngFor="let menuElement of menuElements" [routerLink]="menuElement.link" [routerLinkActive]="['active']">
+            <button mat-button>
+              {{menuElement.text}}
+            </button>
+          </a>
+          <a href="#" [routerLink]="['/account']" [routerLinkActive]="['active']">
+            <button mat-button>
+              <mat-icon>account_circle</mat-icon> {{user?.email}}
+            </button>
+          </a>
+          <a href="#" (click)="signOut()">
+            <button mat-button>
+              <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
+            </button>
+          </a>
       </span>
 
       <span *ngIf="showMenuButton">
@@ -28,6 +33,10 @@
           <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #loggedMenu="matMenu">
+          <a mat-menu-item [routerLink]="['/dashboard']" [routerLinkActive]="['active']">
+            Dashboard
+          </a>
+          <mat-divider></mat-divider>
           <a mat-menu-item *ngFor="let menuElement of menuElements" [routerLink]="menuElement.link" [routerLinkActive]="['active']">
             {{menuElement.text}}
           </a>

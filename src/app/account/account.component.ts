@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AccountComponent implements OnInit {
   sections: any[] = [
     { name: "Perfil", link: ["/account/profile"] },
-    { name: "Configuración", link: ["/account/settings"] },
+    { name: 'Acerca de', link: ["/account/about"]}
   ];
   constructor() {}
 

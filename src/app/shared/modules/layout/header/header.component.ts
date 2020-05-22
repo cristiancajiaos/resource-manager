@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   showMenuButton: boolean;
 
   menuElements: any[] = [
-    { text: 'Dashboard', link: ['/dashboard']},
     { text: 'Categorias', link: ['/categories']},
     { text: 'Clientes', link: ['/clients']},
     { text: 'Avisos', link: ['/ads']},
@@ -45,7 +44,7 @@ export class HeaderComponent implements OnInit {
     try {
       const result = await this.authService.signOut();
       this.router.navigate(["home"]);
-      this.toastr.success("Deslogueado");
+      this.toastr.success("Se cerró sesión exitosamente");
     } catch (error) {
       this.toastr.error(error);
     }
