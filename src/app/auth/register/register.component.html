@@ -30,10 +30,11 @@
             <app-form-error-password></app-form-error-password>
           </mat-error>
         </mat-form-field>
-        <button type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid">
+        <button type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid || registering">
           Crear cuenta
         </button>
       </form>
+      <p *ngIf="registering">Creando cuenta...</p>
     </mat-card-content>
     <mat-card-footer>
       <p>Si ya tienes una cuenta, <a href="#" [routerLink]="['/sign-in']">inicia sesión ahora</a>.</p>

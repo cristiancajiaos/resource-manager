@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   pwd = new FormControl('', [Validators.required, Validators.minLength(8)]);
 
+  registering = false;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -33,18 +35,21 @@ export class RegisterComponent implements OnInit {
   }
 
   async register() {
+    this.registering = true;
     const {email, pwd} = this.registerForm.value;
 
     try {
       const result = this.authService.register(email, pwd);
       result.then(value => {
         if (value) {
-          this.toastr.success("La cuenta se creó exitosamente");
-          this.router.navigate(["email-verification"]);
+          this.toastr.success('La cuenta se creó exitosamente');
+          this.router.navigate(['email-verification']);
         }
       }).catch(error => {
         console.log(error);
-       });
+      }).finally(() => {
+        this.registering = false;
+      })
     } catch (error) {
       console.log(error);
     }

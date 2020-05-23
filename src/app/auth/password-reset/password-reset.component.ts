@@ -15,6 +15,8 @@ export class PasswordResetComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
+  submitting = false;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -28,12 +30,16 @@ export class PasswordResetComponent implements OnInit {
   }
 
   async passwordReset() {
-    const {email} = this.passwordResetForm.value;
+    this.submitting = true;
+    const { email } = this.passwordResetForm.value;
+
     try {
       const result = await this.authService.passwordReset(email);
       this.toastr.success('Se envió, a tu correo, un mensaje con instrucciones para resetear tu contraseña');
+      this.submitting = false;
     } catch (error) {
       this.toastr.error(error);
+      this.submitting = true;
     }
   }
 

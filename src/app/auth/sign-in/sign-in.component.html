@@ -23,15 +23,15 @@
             <app-form-error-required></app-form-error-required>
           </mat-error>
         </mat-form-field>
-        <button type="submit" mat-raised-button color="primary" [disabled]="signInForm.invalid">
+        <button type="submit" mat-raised-button color="primary" [disabled]="signInForm.invalid || signing">
           Iniciar Sesión
         </button>
       </form>
+      <p *ngIf="signing">Iniciando sesión...</p>
     </mat-card-content>
     <mat-card-footer>
       <p>Si no tienes una cuenta, <a href="#" [routerLink]="['/register']">registrate ahora</a>.</p>
-      <p>Si olvidaste tu contraseña, <a href="#" [routerLink]="['/password-reset']">ingresa aquí para resetearla</a>.
-      </p>
+      <p>Si olvidaste tu contraseña, <a href="#" [routerLink]="['/password-reset']">ingresa aquí para resetearla</a>.</p>
       <mat-divider></mat-divider>
       <div class="google-sign-in">
         <p>¿Deseas iniciar sesión con tu cuenta de <strong>Google</strong>?</p>
