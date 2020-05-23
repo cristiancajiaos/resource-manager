@@ -29,4 +29,16 @@ export class ShippingsService {
         return { id, ...data };
       })));
   }
+
+  getShipping(id: string): Observable<ShippingI> {
+    return this.afs.doc<ShippingI>(`shippings/${id}`).valueChanges();
+  }
+
+  editShipping(shipping: ShippingI) {
+    return this.shippingsCollection.doc(shipping.id).update(shipping);
+  }
+
+  deleteShipping(shipping: ShippingI) {
+    return this.shippingsCollection.doc(shipping.id).delete();
+  }
 }

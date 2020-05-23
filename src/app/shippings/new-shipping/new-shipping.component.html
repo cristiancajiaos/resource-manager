@@ -14,7 +14,8 @@
             </mat-form-field>
             <mat-form-field>
               <mat-label>Descripción</mat-label>
-              <input matInput type="text" id="shippingDescription" name="shippingDescription" formControlName="shippingDescription" />
+              <textarea matInput id="shippingDescription" name="shippingDescription"
+                formControlName="shippingDescription"></textarea>
               <mat-error *ngIf="shippingDescription.touched && shippingDescription.hasError('required')">
                 <app-form-error-required></app-form-error-required>
               </mat-error>

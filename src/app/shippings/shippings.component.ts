@@ -41,7 +41,15 @@ export class ShippingsComponent implements OnInit {
 
   deleteShipping(shipping: ShippingI) {
     if (confirm('¿Estás seguro de borrar este método de despacho? Una vez hecho esto, no puedes deshacer la acción.')) {
-      // Borrar método de despacho
+      this.shippingsService
+        .deleteShipping(shipping)
+        .then(() => {
+          this.toastr.success('Método de despacho eliminado exitosamente');
+        })
+        .catch(error => {
+          console.log(error);
+          this.toastr.error(error);
+        });
     }
   }
 }
