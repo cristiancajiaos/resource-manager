@@ -1,0 +1,36 @@
+<div class="form-mat-card">
+  <mat-card>
+      <mat-card-header>
+          <mat-card-title>Nuevo método de despacho</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <form [formGroup]="newShippingForm" (ngSubmit)="addShipping()">
+            <mat-form-field>
+              <mat-label>Título</mat-label>
+              <input matInput type="text" id="shippingTitle" name="shippingTitle" formControlName="shippingTitle"/>
+              <mat-error *ngIf="shippingTitle.touched && shippingTitle.hasError('required')">
+                <app-form-error-required></app-form-error-required>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Descripción</mat-label>
+              <textarea matInput id="shippingDescription" name="shippingDescription"
+                formControlName="shippingDescription"></textarea>
+              <mat-error *ngIf="shippingDescription.touched && shippingDescription.hasError('required')">
+                <app-form-error-required></app-form-error-required>
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="newShippingForm.invalid || submitted">
+                <mat-icon>add</mat-icon> Añadir método de despacho
+            </button>
+          </form>
+          <p *ngIf="submitted">Añadiendo método de despacho...</p>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer>
+          <button mat-raised-button color="warn" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon> Volver atrás
+          </button>
+      </mat-card-footer>
+  </mat-card>
+</div>

@@ -1,0 +1,40 @@
+<div class="form-mat-card">
+  <mat-card>
+      <div *ngIf="shipping$; else loading">
+        <mat-card-header>
+          <mat-card-title>Editar método de despacho</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="editShippingForm" (ngSubmit)="editShipping()">
+            <mat-form-field>
+              <mat-label>Título</mat-label>
+              <input matInput id="shippingTitle" name="shippingTitle" formControlName="shippingTitle"/>
+              <mat-error *ngIf="shippingTitle.touched && shippingTitle.hasError('required')">
+                <app-form-error-required></app-form-error-required>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Descripción</mat-label>
+              <textarea matInput id="shippingDescription" name="shippingDescription" formControlName="shippingDescription"></textarea>
+              <mat-error *ngIf="shippingDescription.touched && shippingDescription.hasError('required')">
+                <app-form-error-required></app-form-error-required>
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="editShippingForm.invalid || submitted">
+              <mat-icon>edit</mat-icon> Editar método de despacho
+            </button>
+          </form>
+          <p *ngIf="submitted">Editando método de despacho...</p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-footer>
+          <button mat-raised-button color="warn" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon> Volver atrás
+          </button>
+        </mat-card-footer>
+      </div>
+      <ng-template #loading>
+        <app-now-loading></app-now-loading>
+      </ng-template>
+  </mat-card>
+</div>

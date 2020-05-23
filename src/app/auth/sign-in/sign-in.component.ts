@@ -19,6 +19,8 @@ export class SignInComponent implements OnInit {
   email = new FormControl('', Validators.required);
   pwd = new FormControl('', Validators.required);
 
+  signing = false;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -33,20 +35,23 @@ export class SignInComponent implements OnInit {
   }
 
   async signIn() {
+    this.signing = true;
     const { email, pwd } = this.signInForm.value;
 
     try {
       const result = this.authService.signIn(email, pwd);
       if (result && (await result).user.emailVerified) {
         this.router.navigate(['dashboard']);
-        this.toastr.success('Logueado');
+        this.toastr.success('Inicio de sesión exitoso');
       } else if (result) {
         this.router.navigate(['email-verification']);
         this.toastr.success('Inicio de sesión exitoso');
         this.toastr.warning('Este correo no está verificado');
       }
+      this.signing = false;
     } catch (error) {
       console.log(error);
+      this.signing = false;
     }
   }
 
