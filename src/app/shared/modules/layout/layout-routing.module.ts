@@ -5,9 +5,7 @@ import { AuthGuard } from '../../guards/auth.guard';
 const routes: Routes = [
   {
     path: 'dashboard',
-    canActivate: [
-      AuthGuard
-    ],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('../../../dashboard/dashboard.module').then(
         (m) => m.DashboardModule
@@ -15,9 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'categories',
-    canActivate: [
-      AuthGuard
-    ],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./../../../categories/categories.module').then(
         (m) => m.CategoriesModule
@@ -25,33 +21,25 @@ const routes: Routes = [
   },
   {
     path: 'clients',
-    canActivate: [
-      AuthGuard
-    ],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('../../../clients/clients.module').then((m) => m.ClientsModule),
   },
   {
     path: 'ads',
-    canActivate: [
-      AuthGuard
-    ],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('../../../ads/ads.module').then((m) => m.AdsModule),
   },
   {
     path: 'products',
-    canActivate: [
-      AuthGuard
-    ],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('../../../products/products.module').then((m) => m.ProductsModule),
   },
   {
     path: 'locations',
-    canActivate: [
-      AuthGuard
-    ],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('../../../locations/locations.module').then(
         (m) => m.LocationsModule
@@ -59,19 +47,23 @@ const routes: Routes = [
   },
   {
     path: 'paymethods',
-    canActivate: [
-      AuthGuard
-    ],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('../../../paymethods/paymethods.module').then(
         (m) => m.PaymethodsModule
       ),
   },
   {
+    path: 'shippings',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../../../shippings/shippings.module').then(
+        (m) => m.ShippingsModule
+      ),
+  },
+  {
     path: 'account',
-    canActivate: [
-      AuthGuard
-    ],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('../../../account/account.module').then((m) => m.AccountModule),
   },

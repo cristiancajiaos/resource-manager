@@ -22,7 +22,8 @@ export class HeaderComponent implements OnInit {
     { text: 'Avisos', link: ['/ads']},
     { text: 'Productos', link: ['/products']},
     { text: 'Ubicaciones', link: ['/locations']},
-    { text: 'Medios de Pago', link: ['/paymethods']}
+    { text: 'Medios de Pago', link: ['/paymethods']},
+    { text: 'Medios de Despacho', link: ['/shippings']}
   ];
 
   constructor(
