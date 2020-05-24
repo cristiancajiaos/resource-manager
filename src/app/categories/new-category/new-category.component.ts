@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { CategoryI } from './../../shared/interfaces/category-i';
-import { CategoryService } from '../category.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
+import { CategoriesService } from '../categories.service';
 
 @Component({
   selector: 'app-new-category',
@@ -24,7 +24,7 @@ export class NewCategoryComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private categoryService: CategoryService,
+    private categoriesService: CategoriesService,
     private router: Router,
     private toastr: ToastrService,
     private location: Location
@@ -44,7 +44,7 @@ export class NewCategoryComponent implements OnInit {
     this.submitted = true;
 
     this.category = this.newCategoryForm.value;
-    this.categoryService.addCategory(this.category).then(() => {
+    this.categoriesService.addCategory(this.category).then(() => {
       this.router.navigate(['categories']);
       this.toastr.success('Categoría añadida exitosamente');
     }).catch(error => {

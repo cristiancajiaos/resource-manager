@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../category.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryI } from 'src/app/shared/interfaces/category-i';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
+import { CategoriesService } from '../categories.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -26,7 +26,7 @@ export class EditCategoryComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private categoryService: CategoryService,
+    private categoriesService: CategoriesService,
     private router: Router,
     private toastr: ToastrService,
     private location: Location
@@ -44,8 +44,8 @@ export class EditCategoryComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');
-        this.category$ = this.categoryService.getCategory(this.id);
-        this.categoryService.getCategory(this.id).subscribe(category => {
+        this.category$ = this.categoriesService.getCategory(this.id);
+        this.categoriesService.getCategory(this.id).subscribe(category => {
           this.setInitialValues(category);
         });
       }
@@ -63,7 +63,7 @@ export class EditCategoryComponent implements OnInit {
       categoryTitle: this.editCategoryForm.value.categoryTitle,
       categoryDescription: this.editCategoryForm.value.categoryDescription
     };
-    this.categoryService.editCategory(category)
+    this.categoriesService.editCategory(category)
       .then(() => {
         this.router.navigate(['/categories']);
         this.toastr.success('Categoría editada exitosamente');

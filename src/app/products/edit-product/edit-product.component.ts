@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { CategoryService } from 'src/app/categories/category.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -8,6 +7,7 @@ import { Observable } from 'rxjs';
 import { ProductI } from 'src/app/shared/interfaces/product-i';
 import { CategoryI } from 'src/app/shared/interfaces/category-i';
 import { Location } from '@angular/common';
+import { CategoriesService } from 'src/app/categories/categories.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -31,7 +31,7 @@ export class EditProductComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productsService: ProductsService,
-    private categoryService: CategoryService,
+    private categoriesService: CategoriesService,
     private router: Router,
     private toastr: ToastrService,
     private location: Location
@@ -48,7 +48,7 @@ export class EditProductComponent implements OnInit {
       productDescription: this.productDescription
     });
 
-    this.categories$ = this.categoryService.getAllCategories();
+    this.categories$ = this.categoriesService.getAllCategories();
 
     this.activatedRoute.paramMap.subscribe(params => {
       if (params.has('id')) {

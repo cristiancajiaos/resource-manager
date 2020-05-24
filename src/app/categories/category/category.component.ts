@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryI } from './../../shared/interfaces/category-i';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryService } from '../category.service';
 import { Location } from '@angular/common';
+import { CategoriesService } from '../categories.service';
 
 @Component({
   selector: 'app-category',
@@ -18,7 +18,7 @@ export class CategoryComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private categoryService: CategoryService,
+    private categoriesService: CategoriesService,
     private location: Location,
     private router: Router
   ) { }
@@ -27,7 +27,7 @@ export class CategoryComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');
-        this.category$ = this.categoryService.getCategory(this.id);
+        this.category$ = this.categoriesService.getCategory(this.id);
       }
     });
   }
