@@ -1,22 +1,29 @@
-<div class="form-mat-card">
+<div class="general-mat-card">
   <mat-card>
       <div *ngIf="location$ | async as location; else loading">
+        <mat-card-header>
+          <mat-card-title>Ubicación</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
         <mat-card-content>
-          <h3>Dirección</h3>
+          <h2>Dirección</h2>
           <p>{{location?.locationDirection}}</p>
-          <h3>Estado / Comuna</h3>
+          <h2>Estado / Comuna</h2>
           <p>{{location?.locationState}}</p>
-          <h3>Ciudad</h3>
+          <h2>Ciudad</h2>
           <p>{{location?.locationCity}}</p>
-          <h3>País</h3>
+          <h2>País</h2>
           <p>{{location?.locationCountry}}</p>
+          <button mat-raised-button color="primary">
+            <mat-icon>edit</mat-icon> Editar ubicación
+          </button>
         </mat-card-content>
         <mat-divider></mat-divider>
-        <div class="location-actions">
+        <mat-card-footer>
           <button mat-raised-button color="warn" (click)="goBack()">
             <mat-icon>arrow_back</mat-icon> Volver atrás
           </button>
-        </div>
+        </mat-card-footer>
       </div>
       <ng-template #loading>
         <app-now-loading></app-now-loading>

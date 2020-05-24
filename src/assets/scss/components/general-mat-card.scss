@@ -15,12 +15,21 @@
       font-weight: bold;
     }
 
-    .card-actions {
+    .mat-card-content {
       padding-top: 1rem;
-
+      
       button {
         display: block;
         width: 100%;
+        text-transform: uppercase;
+      }
+    }
+
+    .mat-card-footer {
+      padding-top: 1rem;
+      margin: 1rem auto 0 auto;
+
+      button {
         text-transform: uppercase;
       }
     }
