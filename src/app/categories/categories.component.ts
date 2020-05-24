@@ -13,7 +13,7 @@ import { CategoriesService } from './categories.service';
   templateUrl: "./categories.component.html",
   styleUrls: ["./categories.component.scss"],
 })
-export class CategoriesComponent implements OnInit, AfterViewInit {
+export class CategoriesComponent implements OnInit {
   displayedColumns: string[] = ['categoryTitle', 'categoryDescription', 'actions'];
   dataSource: MatTableDataSource<CategoryI> | null;
 
@@ -32,9 +32,6 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-  }
-
-  ngAfterViewInit() {
   }
 
   addCategory() {
