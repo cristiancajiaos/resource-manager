@@ -1,0 +1,49 @@
+.ad-mat-card {
+  .mat-card {
+    margin: 1rem auto;
+
+    @media screen and (max-width: 991px) {
+      width: inherit;
+    }
+
+    @media screen and (min-width: 992px) {
+      width: 30%;
+    }
+
+    .mat-card-header {
+      .mat-card-title {
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+
+    .mat-card-content {
+      .ad-description {
+        padding: 0.25rem;
+      }
+
+      .ad-contact {
+        padding: 0.25rem;
+      }
+
+      .ad-actions {
+        padding-top: 1rem;
+
+        button {
+          display: block;
+          width:100%;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .mat-card-footer {
+      padding-top: 1rem;
+      margin: 1rem auto 0 auto;
+
+      button {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

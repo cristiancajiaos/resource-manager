@@ -1,4 +1,4 @@
-<div class="form-mat-card">
+<div class="ad-mat-card">
   <mat-card>
     <div *ngIf="ad$ | async as ad; else loading">
       <mat-card-header>
@@ -12,23 +12,26 @@
         </div>
         <mat-divider></mat-divider>
         <div class="ad-contact">
-          <p>
-            <mat-icon>font_download</mat-icon>{{ad.adName}}
-          </p>
-          <p>
-            <mat-icon>phone</mat-icon> {{ad.adPhone}}
-          </p>
-          <p>
-            <mat-icon>email</mat-icon> {{ad.adEmail}}
-          </p>
+          <h2><mat-icon>font_download</mat-icon> Nombre de quién publica el aviso</h2>
+          <p>{{ad?.adName}}</p>
+          <h2><mat-icon>phone</mat-icon> Teléfono</h2>
+          <p>{{ad?.adPhone}}</p>
+          <h2><mat-icon>email</mat-icon> Email</h2>
+          <p>{{ad?.adEmail}}</p>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="ad-actions">
+          <button mat-raised-button color="primary" (click)="editAd()">
+            <mat-icon>edit</mat-icon> Editar Aviso
+          </button>
         </div>
       </mat-card-content>
       <mat-divider></mat-divider>
-      <div class="ad-actions">
+      <mat-card-footer>
         <button mat-raised-button color="warn" (click)="goBack()">
           <mat-icon>arrow_back</mat-icon> Volver atrás
         </button>
-      </div>
+      </mat-card-footer>
     </div>
     <ng-template #loading>
       <app-now-loading></app-now-loading>
