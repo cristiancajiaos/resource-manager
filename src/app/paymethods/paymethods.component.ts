@@ -36,6 +36,10 @@ export class PaymethodsComponent implements OnInit {
     this.router.navigate(['paymethods', 'new']);
   }
 
+  viewPayMethod(payMethod: PayMethodI) {
+    this.router.navigate(['paymethods', payMethod.id]);
+  }
+
   editPayMethod(payMethod: PayMethodI) {
     this.router.navigate(['paymethods', payMethod.id, 'edit']);
   }

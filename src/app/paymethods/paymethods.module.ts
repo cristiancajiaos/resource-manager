@@ -9,10 +9,11 @@ import { MaterialModule } from '../shared/modules/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingModule } from '../shared/modules/loading/loading.module';
 import { FormErrorModule } from '../shared/modules/form-error/form-error.module';
+import { PaymethodComponent } from './paymethod/paymethod.component';
 
 
 @NgModule({
-  declarations: [PaymethodsComponent, NewPaymethodComponent, EditPaymethodComponent],
+  declarations: [PaymethodsComponent, NewPaymethodComponent, EditPaymethodComponent, PaymethodComponent],
   imports: [
     CommonModule,
     PaymethodsRoutingModule,

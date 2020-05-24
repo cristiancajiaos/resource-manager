@@ -3,14 +3,15 @@
     <mat-card-header>
       <mat-card-title>No encontrado</mat-card-title>
     </mat-card-header>
+    <mat-divider></mat-divider>
     <mat-card-content>
       <p>No se encontró el contenido que estabas buscando</p>
     </mat-card-content>
     <mat-divider></mat-divider>
-    <div class="card-actions">
-      <button mat-raised-button color="primary" (click)="goToHome()">
-        <mat-icon>home</mat-icon> Volver al Home
-      </button>
-    </div>
+    <mat-card-footer>
+       <button mat-raised-button color="primary" (click)="goToHome()">
+         <mat-icon>home</mat-icon> Volver al Home
+       </button>
+    </mat-card-footer>
   </mat-card>
 </div>

@@ -36,6 +36,10 @@
                 Acciones
               </th>
               <td mat-cell *matCellDef="let element">
+                <button mat-button color="primary" matTooltip="Ver en detalle este método de pago"
+                 (click)="viewPayMethod(element)">
+                  <mat-icon>remove_red_eye</mat-icon>
+                </button>
                 <button mat-button color="primary" matTooltip="Editar este método de pago"
                   (click)="editPayMethod(element)">
                   <mat-icon>edit</mat-icon>
