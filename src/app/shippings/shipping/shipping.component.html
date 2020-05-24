@@ -1,0 +1,26 @@
+<div class="general-mat-card">
+  <div *ngIf="shipping$ | async as shipping; else loading">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{shipping?.shippingTitle}}</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <h2>Descripción</h2>
+        <p>{{shipping?.shippingDescription}}</p>
+        <button mat-raised-button color="primary" (click)="editShipping()">
+          <mat-icon>edit</mat-icon> Editar este método de despacho
+        </button>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer>
+        <button mat-raised-button color="warn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Volver atrás
+        </button>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+  <ng-template #loading>
+    <app-now-loading></app-now-loading>
+  </ng-template>
+</div>

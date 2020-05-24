@@ -10,10 +10,11 @@ import { EditShippingComponent } from './edit-shipping/edit-shipping.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormErrorModule } from '../shared/modules/form-error/form-error.module';
 import { LoadingModule } from '../shared/modules/loading/loading.module';
+import { ShippingComponent } from './shipping/shipping.component';
 
 
 @NgModule({
-  declarations: [ShippingsComponent, NewShippingComponent, EditShippingComponent],
+  declarations: [ShippingsComponent, NewShippingComponent, EditShippingComponent, ShippingComponent],
   imports: [
     CommonModule,
     ShippingsRoutingModule,

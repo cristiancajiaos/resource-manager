@@ -25,6 +25,10 @@
                 <ng-container matColumnDef="actions">
                   <th mat-header-cell *matHeaderCellDef>Acciones</th>
                   <td mat-cell *matCellDef="let element">
+                    <button mat-button color="primary" matTooltip="Ver en detalle este método de despacho"
+                      (click)="viewShipping(element)">
+                      <mat-icon>remove_red_eye</mat-icon>
+                    </button>
                     <button mat-button color="primary" matTooltip="Editar este medio de despacho" (click)="editShipping(element)">
                       <mat-icon>edit</mat-icon>
                     </button>

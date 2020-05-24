@@ -35,6 +35,10 @@ export class ShippingsComponent implements OnInit {
     this.router.navigate(['shippings', 'new']);
   }
 
+  viewShipping(shipping: ShippingI) {
+    this.router.navigate(['shippings', shipping.id]);
+  }
+
   editShipping(shipping: ShippingI) {
     this.router.navigate(['shippings', shipping.id, 'edit']);
   }
