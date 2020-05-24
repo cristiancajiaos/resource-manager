@@ -41,6 +41,10 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
     this.router.navigate(['categories', 'new']);
   }
 
+  viewCategory(category: CategoryI) {
+    this.router.navigate(['categories', category.id]);
+  }
+
   editCategory(category: CategoryI) {
     this.router.navigate(['categories', category.id, 'edit']);
   }

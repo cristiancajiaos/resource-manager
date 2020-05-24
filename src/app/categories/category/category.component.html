@@ -1,1 +1,28 @@
-<p>category works!</p>
+<div class="general-mat-card">
+  <mat-card>
+    <div *ngIf="category$ | async as category; else loading">
+       <mat-card-header>
+         <mat-card-title>Categoría</mat-card-title>
+       </mat-card-header>
+       <mat-divider></mat-divider>
+       <mat-card-content>
+         <h2>Título</h2>
+         <p>{{category?.categoryTitle}}</p>
+         <h2>Descripción</h2>
+         <p>{{category?.categoryDescription}}</p>
+         <button mat-raised-button color="primary" (click)="editCategory()">
+           <mat-icon>edit</mat-icon> Editar categoría
+         </button>
+       </mat-card-content>
+       <mat-divider></mat-divider>
+       <mat-card-footer>
+         <button mat-raised-button color="warn" (click)="goBack()">
+           <mat-icon>arrow_back</mat-icon> Volver atrás
+         </button>
+       </mat-card-footer>
+    </div>
+    <ng-template #loading>
+      <app-now-loading></app-now-loading>
+    </ng-template>
+  </mat-card>
+</div>
