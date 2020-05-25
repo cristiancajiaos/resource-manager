@@ -38,7 +38,6 @@ export class ProfileComponent implements OnInit {
     });
 
     this.authService.userData$.subscribe(user => {
-      console.log(user);
       this.setInitialValues(user);
     });
   }

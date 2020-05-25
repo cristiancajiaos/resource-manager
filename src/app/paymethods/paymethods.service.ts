@@ -35,7 +35,6 @@ export class PaymethodsService {
   }
 
   editPayMethod(payMethod: PayMethodI) {
-    console.log('editPayMethod');
     return this.paymethodsCollection.doc(payMethod.id).update(payMethod);
   }
 
