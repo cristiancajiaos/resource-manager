@@ -44,7 +44,6 @@ export class ProfileComponent implements OnInit {
   }
 
   setInitialValues(user: UserI) {
-    console.log(user);
     this.profileForm.patchValue({
       displayName: user.displayName,
       email: user.email

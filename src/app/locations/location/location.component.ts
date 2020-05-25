@@ -31,8 +31,11 @@ export class LocationComponent implements OnInit {
     });
   }
 
+  editLocation() {
+    this.router.navigate(['locations', this.id, 'edit']);
+  }
+
   goBack() {
-    console.log('goBack()');
     this.location.back();
   }
 }
