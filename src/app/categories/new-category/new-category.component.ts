@@ -46,7 +46,7 @@ export class NewCategoryComponent implements OnInit {
     this.category = this.newCategoryForm.value;
     this.categoriesService.addCategory(this.category).then(() => {
       this.router.navigate(['categories']);
-      this.toastr.success('Categoría añadida exitosamente');
+      this.toastr.success('Categoría añadido exitosamente');
     }).catch(error => {
       console.log(error);
       this.toastr.error(error);

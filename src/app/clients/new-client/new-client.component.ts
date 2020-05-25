@@ -47,7 +47,7 @@ export class NewClientComponent implements OnInit {
     const client: ClientI = this.newClientForm.value;
     this.clientsService.addClient(client).then(() => {
       this.router.navigate(['clients']);
-      this.toastr.success('Cliente agregado exitosamente');
+      this.toastr.success('Cliente añadido exitosamente');
     }, (error) => {
       console.log(error);
       this.toastr.error(error);

@@ -46,7 +46,7 @@ export class NewPaymethodComponent implements OnInit {
       .addPayMethod(payMethod)
       .then(() => {
         this.router.navigate(['paymethods']);
-        this.toastr.success('Método de pago agregado exitosamente');
+        this.toastr.success('Método de pago añadido exitosamente');
       })
       .catch(error => {
         console.log(error);

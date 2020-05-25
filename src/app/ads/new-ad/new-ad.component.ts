@@ -58,7 +58,7 @@ export class NewAdComponent implements OnInit {
     const ad: AdI = this.newAdForm.value;
     this.adService.addAd(ad).then(() => {
       this.router.navigate(['ads']);
-      this.toastr.success('Aviso creado exitosamente');
+      this.toastr.success('Aviso añadido exitosamente');
     }).catch(error => {
       console.log(error);
       this.toastr.error(error);
