@@ -1,4 +1,5 @@
-@import './../../../../../assets/scss/variables/variables.scss';
+@import "./../../../../../assets/scss/variables/variables.scss";
+
 header {
   a {
     color: white;
@@ -17,7 +18,7 @@ header {
 
   button.mat-button {
     font-size: 0.6rem;
-    padding-left:0.5rem;
+    padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 
@@ -26,9 +27,9 @@ header {
     font-weight: bold;
   }
 
-  .mat-menu {
-    a {
-      font-size: 0.75rem;
+  .mat-toolbar {
+    .mat-menu-item {
+      text-transform: uppercase;
     }
   }
 }

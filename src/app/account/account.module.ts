@@ -8,6 +8,7 @@ import { MaterialModule } from '../shared/modules/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingModule } from '../shared/modules/loading/loading.module';
 import { AboutComponent } from './about/about.component';
+import { FormErrorModule } from '../shared/modules/form-error/form-error.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AboutComponent } from './about/about.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    LoadingModule
+    LoadingModule,
+    FormErrorModule
   ]
 })
 export class AccountModule { }

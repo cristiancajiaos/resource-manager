@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthErrorService } from '../shared/services/auth-error.service';
 import { Observable } from 'rxjs';
 import { auth } from 'firebase/app';
+import { UserI } from '../shared/interfaces/user-i';
 
 @Injectable({
   providedIn: "root",
@@ -67,5 +68,17 @@ export class AuthService {
 
   googleSignIn() {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+
+  async saveUserProfile(user: UserI) {
+    try {
+      const result = this.afAuth.auth.currentUser.updateProfile({
+        displayName: user.displayName,
+      });
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 }
