@@ -14,7 +14,7 @@
           <p>{{location?.locationCity}}</p>
           <h2>País</h2>
           <p>{{location?.locationCountry}}</p>
-          <button mat-raised-button color="primary">
+          <button mat-raised-button color="primary" (click)="editLocation()">
             <mat-icon>edit</mat-icon> Editar esta ubicación
           </button>
         </mat-card-content>

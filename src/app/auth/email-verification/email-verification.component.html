@@ -1,24 +1,27 @@
 <div class="auth-mat-card">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>Verifica tu cuenta</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div *ngIf="user$ | async as user; else loading">
+    <div *ngIf="user$ | async as user; else loading">
+      <mat-card-header>
+        <mat-card-title>Verifica tu cuenta</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
         <p>Ya te has registrado, pero falta un paso: Verificar tu correo.</p>
 
         <p>A tu correo, <strong>{{user?.email}}</strong>, llegó un mensaje con instrucciones para verificar tu
           correo.</p>
 
         <p>Si no te llegó, puedes reenviarlo presionando el botón de abajo.</p>
-
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer>
         <button mat-raised-button color="primary" (click)="resendEmail()">
           <mat-icon>email</mat-icon> Reenviar correo de verificación
         </button>
-      </div>
-      <ng-template #loading>
-        <mat-spinner></mat-spinner>
-      </ng-template>
-    </mat-card-content>
+      </mat-card-footer>
+    </div>
+    <ng-template #loading>
+      <app-now-loading></app-now-loading>
+    </ng-template>
   </mat-card>
 </div>

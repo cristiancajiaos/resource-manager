@@ -9,6 +9,7 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormErrorModule } from '../shared/modules/form-error/form-error.module';
+import { LoadingModule } from '../shared/modules/loading/loading.module';
 
 @NgModule({
   declarations: [SignInComponent, RegisterComponent, EmailVerificationComponent, PasswordResetComponent],
@@ -18,7 +19,8 @@ import { FormErrorModule } from '../shared/modules/form-error/form-error.module'
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    FormErrorModule
+    FormErrorModule,
+    LoadingModule
   ]
 })
 export class AuthModule { }

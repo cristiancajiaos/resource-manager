@@ -2,12 +2,10 @@
   <mat-card>
     <div *ngIf="category$ | async as category; else loading">
        <mat-card-header>
-         <mat-card-title>Categoría</mat-card-title>
+         <mat-card-title>{{category?.categoryTitle}}</mat-card-title>
        </mat-card-header>
        <mat-divider></mat-divider>
        <mat-card-content>
-         <h2>Título</h2>
-         <p>{{category?.categoryTitle}}</p>
          <h2>Descripción</h2>
          <p>{{category?.categoryDescription}}</p>
          <button mat-raised-button color="primary" (click)="editCategory()">

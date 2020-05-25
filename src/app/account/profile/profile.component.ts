@@ -38,13 +38,11 @@ export class ProfileComponent implements OnInit {
     });
 
     this.authService.userData$.subscribe(user => {
-      console.log(user);
       this.setInitialValues(user);
     });
   }
 
   setInitialValues(user: UserI) {
-    console.log(user);
     this.profileForm.patchValue({
       displayName: user.displayName,
       email: user.email

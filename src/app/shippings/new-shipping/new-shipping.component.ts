@@ -44,7 +44,7 @@ export class NewShippingComponent implements OnInit {
       .addShipping(shipping)
       .then(() => {
         this.router.navigate(['shippings']);
-        this.toastr.success('Medio de despacho creado exitosamente');
+        this.toastr.success('Medio de despacho añadido exitosamente');
       })
       .catch(error => {
         console.log(error);

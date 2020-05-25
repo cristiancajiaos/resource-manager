@@ -55,7 +55,7 @@ export class NewProductComponent implements OnInit {
       .newProduct(product)
       .then(() => {
         this.router.navigate(['products']);
-        this.toastr.success('Producto creado exitosamente');
+        this.toastr.success('Producto añadido exitosamente');
       })
       .catch(error => {
         console.log(error);
