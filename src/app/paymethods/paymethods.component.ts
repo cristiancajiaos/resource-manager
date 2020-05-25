@@ -45,7 +45,7 @@ export class PaymethodsComponent implements OnInit {
   }
 
   deletePayMethod(payMethod: PayMethodI) {
-    if (confirm('¿Estás seguro de borrar este método de pago? Una vez hecho esto, no puedes deshacer la acción.')) {
+    if (confirm('¿Estás seguro de borrar este medio de pago? Una vez hecho esto, no puedes deshacer la acción.')) {
       this.paymethodsService
         .deletePayMethod(payMethod)
         .then(() => {
