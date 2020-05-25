@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { CategoryI } from '../shared/interfaces/category-i';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { CategoryI } from './../shared/interfaces/category-i';
 
 @Injectable({
   providedIn: "root",
 })
-export class CategoryService {
-  private categoryCollection: AngularFirestoreCollection<CategoryI>;
+export class CategoriesService {
+  private categoriesCollection: AngularFirestoreCollection<CategoryI>;
 
-  constructor(
-    private afs: AngularFirestore,
-  ) {
-    this.categoryCollection = afs.collection<CategoryI>("categories");
+  constructor(private afs: AngularFirestore) {
+    this.categoriesCollection = afs.collection<CategoryI>('categories');
   }
 
   addCategory(category: CategoryI) {
-    return this.categoryCollection.add(category);
+    return this.categoriesCollection.add(category);
   }
 
   getAllCategories(): Observable<CategoryI[]> {
-    return this.categoryCollection.snapshotChanges().pipe(
+    return this.categoriesCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => {
           const data = a.payload.doc.data() as CategoryI;
@@ -38,10 +35,10 @@ export class CategoryService {
   }
 
   editCategory(category: CategoryI) {
-    return this.categoryCollection.doc(category.id).update(category);
+    return this.categoriesCollection.doc(category.id).update(category);
   }
 
   deleteCategory(category: CategoryI) {
-    return this.categoryCollection.doc(category.id).delete();
+    return this.categoriesCollection.doc(category.id).delete();
   }
 }

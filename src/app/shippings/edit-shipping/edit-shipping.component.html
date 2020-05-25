@@ -2,7 +2,7 @@
   <mat-card>
       <div *ngIf="shipping$; else loading">
         <mat-card-header>
-          <mat-card-title>Editar método de despacho</mat-card-title>
+          <mat-card-title>Editar mmedio de despacho</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <form [formGroup]="editShippingForm" (ngSubmit)="editShipping()">
@@ -21,10 +21,10 @@
               </mat-error>
             </mat-form-field>
             <button mat-raised-button color="primary" [disabled]="editShippingForm.invalid || submitted">
-              <mat-icon>edit</mat-icon> Editar método de despacho
+              <mat-icon>edit</mat-icon> Editar medio de despacho
             </button>
           </form>
-          <p *ngIf="submitted">Editando método de despacho...</p>
+          <p *ngIf="submitted">Editando medio de despacho...</p>
         </mat-card-content>
         <mat-divider></mat-divider>
         <mat-card-footer>

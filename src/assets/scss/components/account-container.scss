@@ -1,0 +1,29 @@
+.account-container {
+  padding-top: 2rem;
+
+  @media screen and (max-width: 991px) {
+    width: inherit;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  form {
+    .mat-form-field {
+      display: block;
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      text-transform: uppercase;
+    }
+  }
+}

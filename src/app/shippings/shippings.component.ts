@@ -35,16 +35,20 @@ export class ShippingsComponent implements OnInit {
     this.router.navigate(['shippings', 'new']);
   }
 
+  viewShipping(shipping: ShippingI) {
+    this.router.navigate(['shippings', shipping.id]);
+  }
+
   editShipping(shipping: ShippingI) {
     this.router.navigate(['shippings', shipping.id, 'edit']);
   }
 
   deleteShipping(shipping: ShippingI) {
-    if (confirm('¿Estás seguro de borrar este método de despacho? Una vez hecho esto, no puedes deshacer la acción.')) {
+    if (confirm('¿Estás seguro de borrar este medio de despacho? Una vez hecho esto, no puedes deshacer la acción.')) {
       this.shippingsService
         .deleteShipping(shipping)
         .then(() => {
-          this.toastr.success('Método de despacho eliminado exitosamente');
+          this.toastr.success('Medio de despacho eliminado exitosamente');
         })
         .catch(error => {
           console.log(error);

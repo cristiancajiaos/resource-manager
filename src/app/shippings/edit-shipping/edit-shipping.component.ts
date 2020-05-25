@@ -67,7 +67,7 @@ export class EditShippingComponent implements OnInit {
       .editShipping(shipping)
       .then(() => {
         this.router.navigate(['shippings']);
-        this.toastr.success('Método de despacho editado exitosamente');
+        this.toastr.success('Medio de despacho editado exitosamente');
       })
       .catch(error => {
         console.log(error);

@@ -1,8 +1,30 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Ver Cliente</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        Text content
-    </mat-card-content>
-</mat-card>
+<div class="general-mat-card">
+  <mat-card>
+    <div *ngIf="client$ | async as client; else loading">
+      <mat-card-header>
+        <mat-card-title>Cliente</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <h2>Nombre del Cliente</h2>
+        <p>{{client?.clientName}}</p>
+        <h2>Email</h2>
+        <p>{{client?.clientEmail}}</p>
+        <h2>Teléfono</h2>
+        <p>{{client?.clientPhone}}</p>
+        <button mat-raised-button color="primary" (click)="editClient()">
+          <mat-icon>edit</mat-icon> Editar este cliente
+        </button>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer>
+        <button mat-raised-button color="warn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Volver atrás
+        </button>
+      </mat-card-footer>
+    </div>
+    <ng-template #loading>
+      <app-now-loading></app-now-loading>
+    </ng-template>
+  </mat-card>
+</div>

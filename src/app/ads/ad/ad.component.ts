@@ -30,6 +30,10 @@ export class AdComponent implements OnInit {
     });
   }
 
+  editAd() {
+    this.router.navigate(['ads', this.id, 'edit']);
+  }
+
   goBack() {
     this.location.back();
   }

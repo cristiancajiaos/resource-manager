@@ -1,1 +1,24 @@
-<p>Aquí se modifica el perfil</p>
+<div class="profile account-container">
+  <div *ngIf="user$ | async as user; else loading">
+    <form [formGroup]="profileForm" (ngSubmit)="submitProfile()">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput name="displayName" id="displayName" formControlName="displayName" />
+        <mat-error *ngIf="displayName.touched && displayName.hasError('required')">
+          <app-form-error-required></app-form-error-required>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput name="email" id="email" placeholder="ejemplo@mail.com" formControlName="email" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="profileForm.invalid || submitted">
+        <mat-icon>person</mat-icon> Actualizar perfil
+      </button>
+    </form>
+    <p *ngIf="submitted">Actualizando perfil...</p>
+  </div>
+  <ng-template #loading>
+    <app-now-loading></app-now-loading>
+  </ng-template>
+</div>

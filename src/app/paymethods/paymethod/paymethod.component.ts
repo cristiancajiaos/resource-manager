@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../products.service';
+import { PaymethodsService } from '../paymethods.service';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
-import { ProductI } from 'src/app/shared/interfaces/product-i';
+import { PayMethodI } from 'src/app/shared/interfaces/pay-method-i';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-paymethod',
+  templateUrl: './paymethod.component.html',
+  styleUrls: ['./paymethod.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class PaymethodComponent implements OnInit {
 
   id: string;
-  product$: Observable<ProductI>;
+  paymethod$: Observable<PayMethodI>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productsSerivce: ProductsService,
+    private paymethodsSerivce: PaymethodsService,
     private router: Router,
     private location: Location
   ) { }
@@ -26,13 +26,13 @@ export class ProductComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');
-        this.product$ = this.productsSerivce.getProduct(this.id);
+        this.paymethod$ = this.paymethodsSerivce.getPayMethod(this.id);
       }
     });
   }
 
-  editProduct() {
-    this.router.navigate(['products', this.id, 'edit']);
+  editPayMethod() {
+    this.router.navigate(['paymethods', this.id, 'edit']);
   }
 
   goBack() {
