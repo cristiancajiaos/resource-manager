@@ -1,6 +1,11 @@
 @import "./../../../../../assets/scss/variables/variables.scss";
 
 header {
+  position: fixed;
+  width: 100%;
+  z-index:999;
+  box-shadow: 1px 1px 5px black;
+
   a {
     color: white;
     text-decoration: none;
